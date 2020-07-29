@@ -1,0 +1,34 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <classPathEntry location="C:\Users\hbjang\.m2\repository\com\h2database\h2\1.4.200\h2-1.4.200.jar"/>
+
+    <context id="db1" targetRuntime="MyBatis3Simple">
+
+        <plugin type="com.softwareloop.mybatis.generator.plugins.LombokPlugin">
+            <property name="data" value="true"/>
+            <property name="builder" value="true"/>
+            <property name="allArgsConstructor" value="true"/>
+        </plugin>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="org.h2.Driver"
+                        connectionURL="jdbc:h2:tcp://localhost/~/test"
+                        userId="sa"
+                        password="">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.op.gg.ogj" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="false"/>
+        </javaModelGenerator>
+
+        <table tableName="MEMBER" domainObjectName="Member"/>
+
+    </context>
+</generatorConfiguration>
