@@ -1,4 +1,4 @@
-package com.op.gg.ogj.game.rpg.model;
+package com.op.gg.ogj.game.type.rpg.model;
 
 import com.op.gg.ogj.game.model.DeviceType;
 import com.op.gg.ogj.game.model.Game;
@@ -17,12 +17,12 @@ public class Rpg extends Game {
 
     private Boolean autoPlayYn;
 
-    protected Rpg(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean actYn){
-        super(gameNm, price, brand, deviceType, actYn);
+    protected Rpg(String gameNm, Integer price, String brand, DeviceType deviceType){
+        super(gameNm, price, brand, deviceType);
     }
 
-    public static Rpg createRpg(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean actYn, Boolean autoPlayYn){
-        return new Rpg(gameNm, price, brand, deviceType, actYn).rpgCreateDefault(autoPlayYn);
+    public static Rpg createRpg(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean autoPlayYn){
+        return new Rpg(gameNm, price, brand, deviceType).rpgCreateDefault(autoPlayYn);
     }
 
     public Rpg rpgCreateDefault(Boolean autoPlayYn){

@@ -44,12 +44,20 @@ public class Game extends BaseDate {
     @OneToMany(mappedBy = "game", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     private List<Character> characters = Lists.newArrayList();
 
-    protected Game(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean actYn) {
+    protected Game(String gameNm, Integer price, String brand, DeviceType deviceType) {
         this.gameNm = gameNm;
         this.price = price;
         this.brand = brand;
         this.deviceType = deviceType;
-        this.actYn = actYn;
+    }
+
+    public static Game createGame(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean actYn) {
+        return new Game(gameNm, price, brand, deviceType).gameCreateDefault();
+    }
+
+    public Game gameCreateDefault(){
+        this.actYn = true;
+        return this;
     }
 
     public void smOstAdd(Ost ost){

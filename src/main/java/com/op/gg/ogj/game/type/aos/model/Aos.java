@@ -1,4 +1,4 @@
-package com.op.gg.ogj.game.aos.model;
+package com.op.gg.ogj.game.type.aos.model;
 
 import com.op.gg.ogj.game.model.DeviceType;
 import com.op.gg.ogj.game.model.Game;
@@ -17,12 +17,12 @@ public class Aos extends Game {
 
     private Boolean usemapYn;
 
-    protected Aos(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean actYn){
-        super(gameNm, price, brand, deviceType, actYn);
+    protected Aos(String gameNm, Integer price, String brand, DeviceType deviceType){
+        super(gameNm, price, brand, deviceType);
     }
 
-    public static Aos createAos(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean actYn, Boolean usemapYn){
-        return new Aos(gameNm, price, brand, deviceType, actYn).aosCreateDefault(usemapYn);
+    public static Aos createAos(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean usemapYn){
+        return new Aos(gameNm, price, brand, deviceType).aosCreateDefault(usemapYn);
     }
 
     public Aos aosCreateDefault(Boolean usemapYn){

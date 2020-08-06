@@ -1,4 +1,4 @@
-package com.op.gg.ogj.game.fps.model;
+package com.op.gg.ogj.game.type.fps.model;
 
 import com.op.gg.ogj.game.model.DeviceType;
 import com.op.gg.ogj.game.model.Game;
@@ -18,12 +18,12 @@ public class Fps extends Game {
 
     private Boolean storyYn;
 
-    protected Fps(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean actYn){
-        super(gameNm, price, brand, deviceType, actYn);
+    protected Fps(String gameNm, Integer price, String brand, DeviceType deviceType){
+        super(gameNm, price, brand, deviceType);
     }
 
-    public static Fps createFps(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean storyYn, Boolean actYn){
-        return new Fps(gameNm, price, brand, deviceType, actYn).fpsCreateDefault(storyYn);
+    public static Fps createFps(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean storyYn){
+        return new Fps(gameNm, price, brand, deviceType).fpsCreateDefault(storyYn);
     }
 
     public Fps fpsCreateDefault(Boolean storyYn){

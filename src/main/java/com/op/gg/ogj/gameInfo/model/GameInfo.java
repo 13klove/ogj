@@ -28,7 +28,7 @@ public class GameInfo extends BaseDate implements Persistable<Long> {
 
     private Boolean actYn;
 
-    @MapsId("gameId")
+    @MapsId
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "game_id")
     private Game game;

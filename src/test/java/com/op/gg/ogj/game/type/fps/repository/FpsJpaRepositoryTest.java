@@ -1,6 +1,6 @@
-package com.op.gg.ogj.game.fps.repository;
+package com.op.gg.ogj.game.type.fps.repository;
 
-import com.op.gg.ogj.game.fps.model.Fps;
+import com.op.gg.ogj.game.type.fps.model.Fps;
 import com.op.gg.ogj.game.model.DeviceType;
 import com.op.gg.ogj.gameInfo.model.GameInfo;
 import com.op.gg.ogj.gameInfo.repository.GameInfoJpaRepository;
@@ -23,7 +23,7 @@ public class FpsJpaRepositoryTest {
     @Transactional
     @Commit
     public void save_fps_test(){
-        Fps fps = Fps.createFps("a", 500, "brand", DeviceType.PC, true, true);
+        Fps fps = Fps.createFps("a", 500, "brand", DeviceType.PC, true);
         fpsJpaRepository.save(fps);
     }
 
@@ -31,7 +31,7 @@ public class FpsJpaRepositoryTest {
     @Transactional
     @Commit
     public void save_fps_gameInfo_test(){
-        Fps fps = Fps.createFps("a", 500, "brand", DeviceType.PC, true, true);
+        Fps fps = Fps.createFps("a", 500, "brand", DeviceType.PC, true);
         fpsJpaRepository.save(fps);
         GameInfo gi = GameInfo.createGameInfo("1", "2");
         System.out.println(fps.getGameId());

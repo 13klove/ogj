@@ -1,0 +1,2 @@
+1. game을 저장할 때는 game_info도 저장이 되어야 한다.
+2. game의 타입이 많다 enum과 팩토리패턴을 적용해서 game entity를 생성
