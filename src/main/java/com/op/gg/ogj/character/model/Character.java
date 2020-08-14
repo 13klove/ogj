@@ -2,7 +2,7 @@ package com.op.gg.ogj.character.model;
 
 import com.google.common.collect.Lists;
 import com.op.gg.ogj.config.baseDate.BaseDate;
-import com.op.gg.ogj.game.model.Game;
+import com.op.gg.ogj.game.model.entity.Game;
 import com.op.gg.ogj.item.model.Item;
 import com.op.gg.ogj.skill.model.Skill;
 import com.op.gg.ogj.skin.model.Skin;

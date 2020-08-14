@@ -1,10 +1,12 @@
 package com.op.gg.ogj.game.service;
 
-import com.op.gg.ogj.game.model.Game;
-import com.op.gg.ogj.game.model.GameParam;
-import com.op.gg.ogj.game.repository.GameJpaRepository;
-import com.op.gg.ogj.gameInfo.model.GameInfo;
+import com.op.gg.ogj.game.model.dto.GameParam;
+import com.op.gg.ogj.game.model.dto.GameResponse;
+import com.op.gg.ogj.game.model.dto.GameSearch;
+import com.op.gg.ogj.game.service.core.GameCoreService;
+import com.op.gg.ogj.game.service.valid.GameValidService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,29 +16,23 @@ import org.springframework.transaction.annotation.Transactional;
 public class GameService {
 
     private final GameValidService gameValidService;
-    private final GameJpaRepository gameJpaRepository;
+    private final GameCoreService gameCoreService;
 
     @Transactional
     public Long createGame(GameParam gameParam){
         gameValidService.createGameValid(gameParam);
-
-        Game game = gameParam.getGameType().create(gameParam);
-        GameInfo gameInfo = GameInfo.createGameInfo(gameParam.getGameInfo1(), gameParam.getGameInfo2());
-        game.gameInfoChange(gameInfo);
-        gameJpaRepository.save(game);
-
-        return game.getGameId();
+        return gameCoreService.createGame(gameParam);
     }
 
     @Transactional
     public Long updateGame(GameParam gameParam){
         gameValidService.updateGameValid(gameParam);
+        return gameCoreService.updateGame(gameParam);
+    }
 
-        Game game = gameJpaRepository.findGameGameInfoByGameId(gameParam.getGameId());
-        game.gameUpdate(gameParam.getGameNm(), gameParam.getPrice(), gameParam.getBrand(), gameParam.getDeviceType());
-        game.getGameInfo().gameInfoUpdate(gameParam.getGameInfo1(), gameParam.getGameInfo2());
-
-        return game.getGameId();
+    public Page<GameResponse> pageGame(GameSearch gameSearch){
+        gameValidService.pageGameValid(gameSearch);
+        return gameCoreService.pageGame(gameSearch);
     }
 
 }

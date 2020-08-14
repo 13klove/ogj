@@ -1,7 +1,7 @@
 //package com.op.gg.ogj.alagacy.model;
 //
 //import com.op.gg.ogj.config.baseDate.BaseDate;
-//import com.op.gg.ogj.game.model.Game;
+//import com.op.gg.ogj.game.model.entity.Game;
 //import lombok.AccessLevel;
 //import lombok.Getter;
 //import lombok.NoArgsConstructor;

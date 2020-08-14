@@ -1,5 +1,7 @@
 package com.op.gg.ogj.game.model;
 
+import com.op.gg.ogj.game.model.dto.GameParam;
+import com.op.gg.ogj.game.model.entity.Game;
 import com.op.gg.ogj.game.type.aos.model.Aos;
 import com.op.gg.ogj.game.type.fps.model.Fps;
 import com.op.gg.ogj.game.type.rpg.model.Rpg;
@@ -18,7 +20,7 @@ public enum GameFactoryMethod {
         }
     },
     RPG{
-        protected  Game createGame(GameParam gameParam){
+        protected Game createGame(GameParam gameParam){
             return Rpg.createRpg(gameParam.getGameNm(), gameParam.getPrice(), gameParam.getBrand(), gameParam.getDeviceType(), gameParam.getAutoPlayYn());
         }
     },

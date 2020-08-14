@@ -1,9 +1,11 @@
-package com.op.gg.ogj.game.model;
+package com.op.gg.ogj.game.model.entity;
 
 import com.google.common.collect.Lists;
 import com.op.gg.ogj.character.model.Character;
 import com.op.gg.ogj.config.baseDate.BaseDate;
-import com.op.gg.ogj.gameInfo.model.GameInfo;
+import com.op.gg.ogj.game.model.DeviceType;
+import com.op.gg.ogj.game.model.GameFactoryMethod;
+import com.op.gg.ogj.gameInfo.model.entity.GameInfo;
 import com.op.gg.ogj.ost.model.Ost;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -32,6 +34,10 @@ public class Game extends BaseDate {
 
     @Enumerated(EnumType.STRING)
     private DeviceType deviceType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "game_type", insertable = false, updatable = false)
+    private GameFactoryMethod gameType;
 
     private Boolean actYn;
 

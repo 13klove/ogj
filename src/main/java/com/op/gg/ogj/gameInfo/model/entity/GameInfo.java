@@ -1,4 +1,4 @@
-package com.op.gg.ogj.gameInfo.model;
+package com.op.gg.ogj.gameInfo.model.entity;
 
 import com.op.gg.ogj.config.baseDate.BaseDate;
 import lombok.AccessLevel;

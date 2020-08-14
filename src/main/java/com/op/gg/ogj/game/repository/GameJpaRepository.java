@@ -1,6 +1,6 @@
 package com.op.gg.ogj.game.repository;
 
-import com.op.gg.ogj.game.model.Game;
+import com.op.gg.ogj.game.model.entity.Game;
 import com.op.gg.ogj.game.repository.queryDsl.GameDslRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,6 +10,6 @@ public interface GameJpaRepository extends JpaRepository<Game, Long>, GameDslRep
 
     Optional<Game> findGameByGameNm(String gameNm);
 
-    Optional<Game> findGameByGameNmAndGameIdIsNot(Long gameId, String gameNm);
+    Optional<Game> findGameByGameNmAndGameIdIsNot(String gameNm, Long gameId);
 
 }

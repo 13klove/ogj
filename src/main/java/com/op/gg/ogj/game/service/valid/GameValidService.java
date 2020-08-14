@@ -1,8 +1,9 @@
-package com.op.gg.ogj.game.service;
+package com.op.gg.ogj.game.service.valid;
 
 import com.op.gg.ogj.config.exception.domain.ParamValidException;
-import com.op.gg.ogj.game.model.Game;
-import com.op.gg.ogj.game.model.GameParam;
+import com.op.gg.ogj.game.model.dto.GameSearch;
+import com.op.gg.ogj.game.model.entity.Game;
+import com.op.gg.ogj.game.model.dto.GameParam;
 import com.op.gg.ogj.game.repository.GameJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,8 +38,15 @@ public class GameValidService {
         if(!StringUtils.hasText(gameParam.getBrand())) throw new ParamValidException("게임 브렌드는 필수 입니다.");
         if(gameParam.getDeviceType() == null) throw new ParamValidException("디바이스 타입은 필수 입니다.");
 
-        Optional<Game> game = gameJpaRepository.findGameByGameNmAndGameIdIsNot(gameParam.getGameId(), gameParam.getGameNm());
+        Optional<Game> game = gameJpaRepository.findGameByGameNmAndGameIdIsNot(gameParam.getGameNm(), gameParam.getGameId());
         if(game.isPresent()) throw new ParamValidException("이미 등록되어 있는 게임 입니다.");
+    }
+
+    public void pageGameValid(GameSearch gameSearch){
+        if(gameSearch.getStartDate() == null || gameSearch.getEndDate() == null) throw new ParamValidException("등록일은 필수 값 입니다.");
+        if((gameSearch.getStartPrice() != null && gameSearch.getEndPrice() == null) || (gameSearch.getStartPrice() == null && gameSearch.getEndPrice() != null)){
+            throw new ParamValidException("가격은 시작가격과 종료가격 둘다 입력해야 합니다.");
+        }
     }
 
 }

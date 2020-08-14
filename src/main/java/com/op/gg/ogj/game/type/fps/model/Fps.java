@@ -1,7 +1,7 @@
 package com.op.gg.ogj.game.type.fps.model;
 
 import com.op.gg.ogj.game.model.DeviceType;
-import com.op.gg.ogj.game.model.Game;
+import com.op.gg.ogj.game.model.entity.Game;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

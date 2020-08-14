@@ -1,5 +1,7 @@
-package com.op.gg.ogj.game.model;
+package com.op.gg.ogj.game.model.dto;
 
+import com.op.gg.ogj.game.model.DeviceType;
+import com.op.gg.ogj.game.model.GameFactoryMethod;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;

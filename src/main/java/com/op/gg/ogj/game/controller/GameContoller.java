@@ -1,6 +1,6 @@
 package com.op.gg.ogj.game.controller;
 
-import com.op.gg.ogj.game.model.GameParam;
+import com.op.gg.ogj.game.model.dto.GameParam;
 import com.op.gg.ogj.game.service.GameService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

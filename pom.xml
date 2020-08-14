@@ -48,6 +48,11 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.gavlyukovskiy</groupId>
+            <artifactId>p6spy-spring-boot-starter</artifactId>
+            <version>1.5.6</version>
+        </dependency>
         <!--user setting-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

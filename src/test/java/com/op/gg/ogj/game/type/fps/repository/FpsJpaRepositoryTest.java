@@ -2,7 +2,7 @@ package com.op.gg.ogj.game.type.fps.repository;
 
 import com.op.gg.ogj.game.model.DeviceType;
 import com.op.gg.ogj.game.type.fps.model.Fps;
-import com.op.gg.ogj.gameInfo.model.GameInfo;
+import com.op.gg.ogj.gameInfo.model.entity.GameInfo;
 import com.op.gg.ogj.gameInfo.repository.GameInfoJpaRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

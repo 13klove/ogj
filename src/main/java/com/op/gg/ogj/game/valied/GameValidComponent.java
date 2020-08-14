@@ -1,6 +1,6 @@
 package com.op.gg.ogj.game.valied;
 
-import com.op.gg.ogj.game.model.GameParam;
+import com.op.gg.ogj.game.model.dto.GameParam;
 import com.op.gg.ogj.game.repository.GameJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
