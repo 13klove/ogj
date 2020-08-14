@@ -24,4 +24,13 @@ public class GameDslRepositoryImpl implements GameDslRepository{
                 .where(game.gameId.eq(id))
                 .fetchOne();
     }
+
+    @Override
+    public Game findGameGameInfoByGameId(Long id) {
+        return jpaQueryFactory.select(game)
+                .from(game)
+                .join(game.gameInfo, gameInfo).fetchJoin()
+                .where(game.gameId.eq(id))
+                .fetchOne();
+    }
 }

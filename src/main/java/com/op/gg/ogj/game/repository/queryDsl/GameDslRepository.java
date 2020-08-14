@@ -6,4 +6,6 @@ public interface GameDslRepository {
 
     Game findGameByGameId(Long id);
 
+    Game findGameGameInfoByGameId(Long id);
+
 }

@@ -55,6 +55,13 @@ public class Game extends BaseDate {
         return new Game(gameNm, price, brand, deviceType).gameCreateDefault();
     }
 
+    public void gameUpdate(String gameNm, Integer price, String brand, DeviceType deviceType){
+        this.gameNm = gameNm;
+        this.price = price;
+        this.brand = brand;
+        this.deviceType = deviceType;
+    }
+
     public Game gameCreateDefault(){
         this.actYn = true;
         return this;

@@ -57,12 +57,17 @@ public class GameInfo extends BaseDate implements Persistable<Long> {
         return new GameInfo(gameInfo1, gameInfo2).gameInfoCreateDefault();
     }
 
+    public void gameInfoUpdate(String gameInfo1, String gameInfo2) {
+        this.gameInfo1 = gameInfo1;
+        this.gameInfo2 = gameInfo2;
+    }
+
     public void smGameChange(Game game){
         gameChange(game);
         game.gameInfoChange(this);
     }
 
-    public void gameChange(Game game){
+    public void gameChange(Game game) {
         this.game = game;
         this.gameId = game.getGameId();
     }

@@ -28,7 +28,7 @@ public class FpsJpaRepositoryTest {
     @Test
     @Transactional
     public void save_fps_gameInfo_test(){
-        Fps fps = Fps.createFps("a", 500, "brand", DeviceType.PC, true);
+        Fps fps = Fps.createFps("a2", 500, "brand", DeviceType.PC, true);
         fpsJpaRepository.save(fps);
         GameInfo gi = GameInfo.createGameInfo("1", "2");
         System.out.println(fps.getGameId());
