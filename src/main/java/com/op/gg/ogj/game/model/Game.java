@@ -35,7 +35,8 @@ public class Game extends BaseDate {
 
     private Boolean actYn;
 
-    @OneToOne(mappedBy = "game", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    @JoinColumn(name = "game_info_id")
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     private GameInfo gameInfo;
 
     @OneToMany(mappedBy = "game", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
@@ -70,11 +71,6 @@ public class Game extends BaseDate {
     public void smOstAdd(Ost ost){
         ostAdd(ost);
         ost.gameChange(this);
-    }
-
-    public void smGameInfoChange(GameInfo gameInfo){
-        gameInfoChange(gameInfo);
-        gameInfo.gameChange(this);
     }
 
     public void smCharacterAdd(Character character){

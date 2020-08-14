@@ -22,7 +22,7 @@ public class GameService {
 
         Game game = gameParam.getGameType().create(gameParam);
         GameInfo gameInfo = GameInfo.createGameInfo(gameParam.getGameInfo1(), gameParam.getGameInfo2());
-        game.smGameInfoChange(gameInfo);
+        game.gameInfoChange(gameInfo);
         gameJpaRepository.save(game);
 
         return game.getGameId();

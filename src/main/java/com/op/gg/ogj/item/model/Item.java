@@ -30,7 +30,8 @@ public class Item extends BaseDate {
     @JoinColumn(name = "character_id")
     private Character character;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "item")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_spec_id")
     private ItemSpec itemSpec;
 
     protected Item(String itemNm, ItemType itemType, Integer price){
@@ -51,11 +52,6 @@ public class Item extends BaseDate {
     public void smCharacterChange(Character character){
         characterChange(character);
         character.itemAdd(this);
-    }
-
-    public void smItemSpecChange(ItemSpec itemSpec){
-        itemSpecChange(itemSpec);
-        itemSpec.itemChange(this);
     }
 
     public void itemSpecChange(ItemSpec itemSpec){
