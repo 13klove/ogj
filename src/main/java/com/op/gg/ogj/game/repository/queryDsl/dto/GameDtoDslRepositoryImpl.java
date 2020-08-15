@@ -17,6 +17,7 @@ import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.util.StringUtils;
 
@@ -40,21 +41,21 @@ public class GameDtoDslRepositoryImpl implements GameDtoDslRepository {
     }
 
     @Override
-    public Page<GameResponse> findPageGameByGameParam(GameSearch gameSearch) {
+    public Page<GameResponse> findPageGameByGameParam(GameSearch gameSearch, Pageable pageable) {
         JPAQuery<GameResponse> query = jpaQueryFactory.select(new QGameResponse(game.gameId, game.gameNm, game.price, game.brand, game.deviceType, game.gameType, game.gameInfo.gameInfo1, game.gameInfo.gameInfo2))
                 .from(game)
                 .join(game.gameInfo, gameInfo)
                 .where(whereGameNm(gameSearch.getGameNm()), whereGameType(gameSearch.getGameType())
                 , whereDeviceType(gameSearch.getDeviceType()), wherePriceRange(gameSearch.getStartPrice(), gameSearch.getEndPrice())
                 , whereBrand(gameSearch.getBrand()), whereCreateDateRange(gameSearch.getStartDate().atStartOfDay(), gameSearch.getEndDate().atStartOfDay()), whereActYn())
-                .offset(gameSearch.getPageable().getOffset())
-                .limit(gameSearch.getPageable().getPageSize());
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize());
 
-        if(gameSearch.getPageable().getSort() != null) selectOrder(gameSearch.getPageable().getSort(), query);
+        if(pageable.getSort() != null) selectOrder(pageable.getSort(), query);
 
         QueryResults<GameResponse> result = query.fetchResults();
 
-        return new PageImpl<>(result.getResults(), gameSearch.getPageable(), result.getTotal());
+        return new PageImpl<>(result.getResults(), pageable, result.getTotal());
     }
 
     @Override

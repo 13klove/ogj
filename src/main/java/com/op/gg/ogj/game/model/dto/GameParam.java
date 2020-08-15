@@ -19,22 +19,19 @@ public class GameParam {
     @ApiModelProperty(value = "게임id")
     private Long gameId;
 
-    @ApiModelProperty(value = "게임이름")
+    @ApiModelProperty(value = "게임이름", required = true)
     private String gameNm;
 
-    @ApiModelProperty(value = "게임가격")
+    @ApiModelProperty(value = "게임가격", required = true)
     private Integer price;
 
-    @ApiModelProperty(value = "게임브렌드")
+    @ApiModelProperty(value = "게임브렌드", required = true)
     private String brand;
 
-    @ApiModelProperty(value = "게임 머신")
+    @ApiModelProperty(value = "게임 머신", required = true)
     private DeviceType deviceType;
 
-    @ApiModelProperty(value = "게임 사용 여부")
-    private Boolean actYn;
-
-    @ApiModelProperty(value = "게임 장르")
+    @ApiModelProperty(value = "게임 장르", required = true)
     private GameFactoryMethod gameType;
 
     //fps
@@ -53,7 +50,7 @@ public class GameParam {
     @ApiModelProperty(value = "rts전용")
     private Boolean licenseYn;
 
-    @ApiModelProperty(value = "게임 정보1")
+    @ApiModelProperty(value = "게임 정보1", required = true)
     private String gameInfo1;
 
     @ApiModelProperty(value = "게임 정보2")

@@ -10,11 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDate;
 
 @Slf4j
 @SpringBootTest
@@ -70,16 +66,16 @@ public class GameServiceTest {
     @Transactional
     public void pageGameTest(){
         //given
-        GameSearch gameSearch = GameSearch.builder().startDate(LocalDate.now().plusDays(-5)).endDate(LocalDate.now().plusDays(1)).pageable(PageRequest.of(0, 10)).build();
-
-        //when
-        Page<GameResponse> page = gameService.pageGame(gameSearch);
-        for(GameResponse temp : page){
-            System.out.println(temp);
-        }
-
-        //then
-        Assertions.assertNotNull(page);
+//        GameSearch gameSearch = GameSearch.builder().startDate(LocalDate.now().plusDays(-5)).endDate(LocalDate.now().plusDays(1)).pageable(PageRequest.of(0, 10)).build();
+//
+//        //when
+//        Page<GameResponse> page = gameService.pageGame(gameSearch);
+//        for(GameResponse temp : page){
+//            System.out.println(temp);
+//        }
+//
+//        //then
+//        Assertions.assertNotNull(page);
     }
 
     @Test

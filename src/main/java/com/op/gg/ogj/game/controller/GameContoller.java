@@ -1,17 +1,16 @@
 package com.op.gg.ogj.game.controller;
 
+import com.op.gg.ogj.config.domain.response.ResponseDto;
 import com.op.gg.ogj.game.model.dto.GameParam;
+import com.op.gg.ogj.game.model.dto.GameSearch;
 import com.op.gg.ogj.game.service.GameService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
+
+////https://eblo.tistory.com/48
 
 @Api(tags = {"game"})
 @RestController
@@ -20,14 +19,31 @@ import org.springframework.web.bind.annotation.RestController;
 public class GameContoller {
 
     private final GameService gameService;
-//https://eblo.tistory.com/48
 
     @PostMapping
     @ApiOperation(value = "게임 등록", notes = "게임 생성")
-    public ResponseEntity<GameParam> createGame(@RequestBody GameParam gameParam, BindingResult bindingResult){
-        return new ResponseEntity<GameParam>(GameParam.builder().gameNm("abc").build(), HttpStatus.OK);
-        //gameService.gameValid(bindingResult);
-        //return gameService.createGame(gameParam);
+    public ResponseDto createGame(@RequestBody GameParam gameParam){
+        System.out.println(gameParam);
+        return ResponseDto.of(gameService.createGame(gameParam));
+    }
+
+    @PutMapping("{id}")
+    @ApiOperation(value = "게임 수정", notes = "게임 수정")
+    public ResponseDto updateGame(@PathVariable(value = "id") Long gameId, @RequestBody GameParam gameParam){
+        gameParam.setGameId(gameId);
+        return ResponseDto.of(gameService.updateGame(gameParam));
+    }
+
+    @GetMapping
+    @ApiOperation(value = "게임 조회(페이지)", notes = "게임 조회(페이지")
+    public ResponseDto pageGame(GameSearch gameSearch, Pageable pageable){
+        return ResponseDto.of(gameService.pageGame(gameSearch, pageable));
+    }
+
+    @GetMapping("{id}")
+    @ApiOperation(value = "게임 상세", notes = "게임 상세")
+    public ResponseDto detailGame(@PathVariable(value = "id") Long gameId){
+        return ResponseDto.of(gameService.detailGame(GameSearch.builder().gameId(gameId).build()));
     }
 
 }

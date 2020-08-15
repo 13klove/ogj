@@ -8,6 +8,7 @@ import com.op.gg.ogj.game.repository.GameJpaRepository;
 import com.op.gg.ogj.gameInfo.model.entity.GameInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,8 +38,8 @@ public class GameCoreService {
         return game.getGameId();
     }
 
-   public Page<GameResponse> pageGame(GameSearch gameSearch){
-        return gameJpaRepository.findPageGameByGameParam(gameSearch);
+   public Page<GameResponse> pageGame(GameSearch gameSearch, Pageable pageable){
+        return gameJpaRepository.findPageGameByGameParam(gameSearch, pageable);
     }
 
     public GameResponse detailGame(GameSearch gameSearch){

@@ -56,6 +56,7 @@ public class Game extends BaseDate {
         this.price = price;
         this.brand = brand;
         this.deviceType = deviceType;
+        this.actYn = true;
     }
 
     public static Game createGame(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean actYn) {

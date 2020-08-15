@@ -1,6 +1,5 @@
 package com.op.gg.ogj.game.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.op.gg.ogj.game.model.DeviceType;
 import com.op.gg.ogj.game.model.GameFactoryMethod;
 import io.swagger.annotations.ApiModel;
@@ -9,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -32,12 +31,12 @@ public class GameSearch {
     @ApiModelProperty(value = "끝 가격 범위")
     private Integer endPrice;
 
-    @ApiModelProperty(value = "시작일")
-    @JsonFormat(pattern = "YYYYmmdd")
+    @ApiModelProperty(value = "시작일", required = true)
+    @DateTimeFormat(pattern = "yyyyMMdd")
     private LocalDate startDate;
 
-    @ApiModelProperty(value = "종료일")
-    @JsonFormat(pattern = "YYYYmmdd")
+    @ApiModelProperty(value = "종료일", required = true)
+    @DateTimeFormat(pattern = "yyyyMMdd")
     private LocalDate endDate;
 
     @ApiModelProperty(value = "브랜드")
@@ -48,8 +47,5 @@ public class GameSearch {
 
     @ApiModelProperty(value = "게임 타입")
     private GameFactoryMethod gameType;
-
-    @ApiModelProperty(value = "페이지: pgae=0&size=20")
-    private Pageable pageable;
 
 }
