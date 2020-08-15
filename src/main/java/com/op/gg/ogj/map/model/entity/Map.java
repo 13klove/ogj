@@ -1,8 +1,8 @@
-package com.op.gg.ogj.map.model;
+package com.op.gg.ogj.map.model.entity;
 
 import com.google.common.collect.Lists;
 import com.op.gg.ogj.config.baseDate.BaseDate;
-import com.op.gg.ogj.ost.model.Ost;
+import com.op.gg.ogj.ost.model.entity.Ost;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

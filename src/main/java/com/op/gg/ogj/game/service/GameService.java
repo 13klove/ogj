@@ -35,4 +35,9 @@ public class GameService {
         return gameCoreService.pageGame(gameSearch);
     }
 
+    public GameResponse detailGame(GameSearch gameSearch){
+        gameValidService.detailGame(gameSearch);
+        return gameCoreService.detailGame(gameSearch);
+    }
+
 }

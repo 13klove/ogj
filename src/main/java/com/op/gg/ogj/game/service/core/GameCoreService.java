@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class GameCoreService {
 
     private final GameJpaRepository gameJpaRepository;
@@ -36,8 +37,12 @@ public class GameCoreService {
         return game.getGameId();
     }
 
-    @Transactional(readOnly = true)
    public Page<GameResponse> pageGame(GameSearch gameSearch){
         return gameJpaRepository.findPageGameByGameParam(gameSearch);
     }
+
+    public GameResponse detailGame(GameSearch gameSearch){
+        return gameJpaRepository.findGameByGameId(gameSearch);
+    }
+
 }

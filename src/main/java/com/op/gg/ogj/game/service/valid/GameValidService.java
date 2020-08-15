@@ -49,4 +49,8 @@ public class GameValidService {
         }
     }
 
+    public void detailGame(GameSearch gameSearch){
+        if(gameSearch.getGameId() == null) throw new ParamValidException("게임을 조회할 수 없습니다.");
+    }
+
 }

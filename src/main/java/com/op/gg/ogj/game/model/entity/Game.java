@@ -6,7 +6,7 @@ import com.op.gg.ogj.config.baseDate.BaseDate;
 import com.op.gg.ogj.game.model.DeviceType;
 import com.op.gg.ogj.game.model.GameFactoryMethod;
 import com.op.gg.ogj.gameInfo.model.entity.GameInfo;
-import com.op.gg.ogj.ost.model.Ost;
+import com.op.gg.ogj.ost.model.entity.Ost;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

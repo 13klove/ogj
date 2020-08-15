@@ -82,6 +82,20 @@ public class GameServiceTest {
         Assertions.assertNotNull(page);
     }
 
+    @Test
+    @Transactional
+    public void detailGameTest(){
+        //given
+        GameSearch gameSearch = GameSearch.builder().gameId(5l).build();
+
+        //when
+        GameResponse game = gameService.detailGame(gameSearch);
+        System.out.println(game);
+
+        //then
+        Assertions.assertNotNull(game);
+    }
+
 
 
 }

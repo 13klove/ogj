@@ -20,6 +20,9 @@ import java.time.LocalDate;
 @ApiModel
 public class GameSearch {
 
+    @ApiModelProperty(value = "게임 id")
+    private Long gameId;
+
     @ApiModelProperty(value = "게임 이름")
     private String gameNm;
 
