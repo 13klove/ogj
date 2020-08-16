@@ -29,7 +29,7 @@ public class GameControllerTest {
     @Test
     @Transactional
     public void createGameTest() throws Exception{
-        GameParam gameParam = GameParam.builder().gameNm("테스트게임2").gameInfo1("테스트게임정보1").brand("인텔")
+        GameParam gameParam = GameParam.builder().gameNm("테스트게임23").gameInfo1("테스트게임정보1").brand("인텔")
                 .deviceType(DeviceType.PC).price(9900).gameType(GameFactoryMethod.AOS).build();
         String param = objectMapper.writeValueAsString(gameParam);
 

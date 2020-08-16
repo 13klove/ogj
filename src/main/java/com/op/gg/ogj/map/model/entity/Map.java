@@ -2,6 +2,7 @@ package com.op.gg.ogj.map.model.entity;
 
 import com.google.common.collect.Lists;
 import com.op.gg.ogj.config.baseDate.BaseDate;
+import com.op.gg.ogj.game.model.entity.Game;
 import com.op.gg.ogj.ost.model.entity.Ost;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -23,6 +24,10 @@ public class Map extends BaseDate {
 
     private Boolean actYn;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    @JoinColumn(name = "game_id")
+    private Game game;
+
     @OneToMany(mappedBy = "map")
     private List<Ost> osts = Lists.newArrayList();
 
@@ -34,6 +39,8 @@ public class Map extends BaseDate {
         return new Map(mapNm).mapCreateDefault();
     }
 
+    public void updateMap(String mapNm) { this.mapNm = mapNm; }
+
     public Map mapCreateDefault(){
         this.actYn = true;
         return this;
@@ -44,8 +51,16 @@ public class Map extends BaseDate {
         ost.mapChange(this);
     }
 
+    public void smGameChange(Game gmae){
+        gameChage(gmae);
+        game.mapAdd(this);
+    }
+
+    public void gameChage(Game gmae) { this.game = game;}
+
     public void ostAdd(Ost ost){
         this.osts.add(ost);
     }
+
 
 }

@@ -1,9 +1,9 @@
 package com.op.gg.ogj.game.service.valid;
 
 import com.op.gg.ogj.config.exception.domain.ParamValidException;
+import com.op.gg.ogj.game.model.dto.GameParam;
 import com.op.gg.ogj.game.model.dto.GameSearch;
 import com.op.gg.ogj.game.model.entity.Game;
-import com.op.gg.ogj.game.model.dto.GameParam;
 import com.op.gg.ogj.game.repository.GameJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +52,13 @@ public class GameValidService {
     public void detailGame(GameSearch gameSearch){
         if(gameSearch.getGameId() == null) throw new ParamValidException("게임을 조회할 수 없습니다.");
     }
+
+//    public void delGame(Long gameId){
+//        if(gameId == null) throw new ParamValidException("삭제할 게임이 없습니다.");
+//    }
+//
+//    public void delGames(List<Long> gamesId){
+//        if(gamesId.isEmpty()) throw new ParamValidException("삭제할 게임이 없습니다.");
+//    }
 
 }
