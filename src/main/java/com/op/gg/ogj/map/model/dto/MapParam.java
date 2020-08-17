@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @ApiModel
@@ -22,5 +24,8 @@ public class MapParam {
 
     @ApiModelProperty(value = "맵이름")
     private String mapNm;
+
+    @ApiModelProperty(value = "맵id 묶음")
+    private List<Long> mapsId;
 
 }

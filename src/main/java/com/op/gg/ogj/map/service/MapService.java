@@ -32,9 +32,9 @@ public class MapService {
     }
 
     @Transactional
-    public void delMap(MapSearch mapSearch){
-        mapValidService.delMapValid(mapSearch);
-        mapCoreService.delMap(mapSearch);
+    public void delMap(MapParam mapParam){
+        mapValidService.delMapValid(mapParam);
+        mapCoreService.delMap(mapParam);
     }
 
     public Page<MapResponse> pageMap(MapSearch mapSearch, Pageable pageable){

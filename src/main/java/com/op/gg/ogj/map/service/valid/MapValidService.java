@@ -28,8 +28,8 @@ public class MapValidService {
     }
 
 
-    public void delMapValid(MapSearch mapSearch) {
-        if(mapSearch.getMapId() == null || mapSearch.getMapsId().isEmpty()) throw new ParamValidException("삭제할 맵을 선택하세요");
+    public void delMapValid(MapParam mapParam) {
+        if(mapParam.getMapId() == null && mapParam.getMapsId().isEmpty()) throw new ParamValidException("삭제할 맵을 선택하세요");
     }
 
     public void detailMap(MapSearch mapSearch) {

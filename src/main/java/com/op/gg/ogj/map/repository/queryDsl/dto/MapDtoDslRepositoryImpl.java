@@ -35,7 +35,7 @@ public class MapDtoDslRepositoryImpl implements MapDtoDslRepository{
                 .from(map)
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
-                .where(whereMapNm(mapSearch.getMapNm()));
+                .where(whereMapNm(mapSearch.getMapNm()), whereGameId(mapSearch.getGameId()));
 
         if(pageable.getSort() != null) selectOrder(pageable.getSort(), query);
 
@@ -50,7 +50,7 @@ public class MapDtoDslRepositoryImpl implements MapDtoDslRepository{
         Map dbMap = jpaQueryFactory.select(map)
                 .distinct()
                 .from(map)
-                .join(map.osts, ost).fetchJoin()
+                .leftJoin(map.osts, ost).fetchJoin()
                 .where(whereMapId(mapSearch.getMapId()))
                 .fetchOne();
 
@@ -75,4 +75,6 @@ public class MapDtoDslRepositoryImpl implements MapDtoDslRepository{
     public BooleanExpression whereMapId(Long mapId){
         return mapId!=null?map.mapId.eq(mapId):null;
     }
+
+    public BooleanExpression whereGameId(Long gameId){ return gameId!=null?map.game.gameId.eq(gameId):null; }
 }

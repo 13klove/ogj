@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 @Api(tags = {"game"})
 @RestController
-@RequestMapping("/api/game")
 @RequiredArgsConstructor
+@RequestMapping("/api/game")
 public class GameContoller {
 
     private final GameService gameService;

@@ -51,12 +51,12 @@ public class Map extends BaseDate {
         ost.mapChange(this);
     }
 
-    public void smGameChange(Game gmae){
-        gameChage(gmae);
+    public void smGameChange(Game game){
+        gameChage(game);
         game.mapAdd(this);
     }
 
-    public void gameChage(Game gmae) { this.game = game;}
+    public void gameChage(Game game) { this.game = game;}
 
     public void ostAdd(Ost ost){
         this.osts.add(ost);

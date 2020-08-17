@@ -40,12 +40,12 @@ public class MapCoreService {
     }
 
     @Transactional
-    public void delMap(MapSearch mapSearch) {
-        if(!mapSearch.getMapsId().isEmpty()) {
-            List<Map> maps = mapJpaRepository.findMapsByMapIdIn(mapSearch.getMapsId());
+    public void delMap(MapParam mapParam) {
+        if(mapParam.getMapsId() != null && !mapParam.getMapsId().isEmpty()) {
+            List<Map> maps = mapJpaRepository.findMapsByMapIdIn(mapParam.getMapsId());
             mapJpaRepository.deleteAll(maps);
         }else{
-            Map map = mapJpaRepository.findById(mapSearch.getMapId()).get();
+            Map map = mapJpaRepository.findById(mapParam.getMapId()).get();
             mapJpaRepository.delete(map);
         }
     }

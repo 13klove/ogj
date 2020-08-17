@@ -7,8 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @ApiModel
@@ -19,10 +17,10 @@ public class MapSearch {
     @ApiModelProperty(value = "맵id")
     private Long mapId;
 
-    @ApiModelProperty(value = "맵id 묶음")
-    private List<Long> mapsId;
-
     @ApiModelProperty(value = "맵이름")
     private String mapNm;
+
+    @ApiModelProperty(value = "게임id")
+    private Long gameId;
 
 }
