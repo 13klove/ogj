@@ -86,7 +86,7 @@ public class GameServiceTest {
     @Transactional
     public void detailGameTest(){
         //given
-        GameSearch gameSearch = GameSearch.builder().gameId(5l).build();
+        GameSearch gameSearch = GameSearch.builder().gameId(13l).build();
 
         //when
         GameResponse game = gameService.detailGame(gameSearch);

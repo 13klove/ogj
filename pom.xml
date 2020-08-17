@@ -18,6 +18,33 @@
         <java.version>1.8</java.version>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <build.profile.id>dev</build.profile.id>
+                <profileActive>dev</profileActive>
+            </properties>
+        </profile>
+        <profile>
+            <id>release</id>
+            <properties>
+                <build.profile.id>release</build.profile.id>
+                <profileActive>release</profileActive>
+            </properties>
+        </profile>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <build.profile.id>local</build.profile.id>
+                <profileActive>local</profileActive>
+            </properties>
+        </profile>
+    </profiles>
+
     <dependencies>
         <!--user setting-->
         <dependency>
@@ -112,6 +139,14 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources-${profileActive}</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

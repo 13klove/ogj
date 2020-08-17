@@ -10,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 
 @Slf4j
 @SpringBootTest
+@ActiveProfiles("local")
 public class MapServiceTest {
 
     @Autowired
@@ -25,7 +27,7 @@ public class MapServiceTest {
     @Transactional
     public void createMapTest(){
         //given
-        MapParam mp = MapParam.builder().gameId(7l).mapNm("헌터").build();
+        MapParam mp = MapParam.builder().gameId(7l).mapNm("헌터x").build();
 
         //when
         Long mapId = mapService.createMap(mp);
@@ -39,7 +41,7 @@ public class MapServiceTest {
     @Transactional
     public void updateMapTest(){
         //given
-        MapParam mp = MapParam.builder().gameId(7l).mapId(16l).mapNm("블루스톰").build();
+        MapParam mp = MapParam.builder().gameId(7l).mapId(17l).mapNm("블루스톰").build();
 
         //when
         Long mapId = mapService.updateMap(mp);
@@ -53,7 +55,7 @@ public class MapServiceTest {
     @Transactional
     public void delMapTest(){
         //given
-        MapParam mp = MapParam.builder().mapId(16l).build();
+        MapParam mp = MapParam.builder().mapId(17l).build();
 
         //when
         mapService.delMap(mp);
