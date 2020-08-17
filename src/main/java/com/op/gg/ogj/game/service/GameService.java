@@ -7,6 +7,7 @@ import com.op.gg.ogj.game.service.core.GameCoreService;
 import com.op.gg.ogj.game.service.valid.GameValidService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,9 +31,14 @@ public class GameService {
         return gameCoreService.updateGame(gameParam);
     }
 
-    public Page<GameResponse> pageGame(GameSearch gameSearch){
+    public Page<GameResponse> pageGame(GameSearch gameSearch, Pageable pageable){
         gameValidService.pageGameValid(gameSearch);
-        return gameCoreService.pageGame(gameSearch);
+        return gameCoreService.pageGame(gameSearch, pageable);
+    }
+
+    public GameResponse detailGame(GameSearch gameSearch){
+        gameValidService.detailGame(gameSearch);
+        return gameCoreService.detailGame(gameSearch);
     }
 
 }

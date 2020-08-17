@@ -10,13 +10,16 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+//https://velog.io/@sa833591/Swagger-API-%EB%AC%B8%EC%84%9C-%EC%9E%90%EB%8F%99%ED%99%94
 @Configuration
 @EnableSwagger2
 public class SwaggerConfiguration {
 
     @Bean
     public Docket swaggerApi(){
-        return new Docket(DocumentationType.SWAGGER_2).apiInfo(swaggerInfo()).select()
+        return new Docket(DocumentationType.SWAGGER_2).apiInfo(swaggerInfo())
+                //.ignoredParameterTypes(Pageable.class)
+                .select()
                 .apis(RequestHandlerSelectors.basePackage("com.op.gg.ogj"))
                 .paths(PathSelectors.ant("/api/**"))
                 .build();

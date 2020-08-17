@@ -6,7 +6,8 @@ import com.op.gg.ogj.config.baseDate.BaseDate;
 import com.op.gg.ogj.game.model.DeviceType;
 import com.op.gg.ogj.game.model.GameFactoryMethod;
 import com.op.gg.ogj.gameInfo.model.entity.GameInfo;
-import com.op.gg.ogj.ost.model.Ost;
+import com.op.gg.ogj.map.model.entity.Map;
+import com.op.gg.ogj.ost.model.entity.Ost;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,11 +52,15 @@ public class Game extends BaseDate {
     @OneToMany(mappedBy = "game", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     private List<Character> characters = Lists.newArrayList();
 
+    @OneToMany(mappedBy = "game", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    private List<Map> maps = Lists.newArrayList();
+
     protected Game(String gameNm, Integer price, String brand, DeviceType deviceType) {
         this.gameNm = gameNm;
         this.price = price;
         this.brand = brand;
         this.deviceType = deviceType;
+        this.actYn = true;
     }
 
     public static Game createGame(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean actYn) {
@@ -74,6 +79,15 @@ public class Game extends BaseDate {
         return this;
     }
 
+    public void smMapAdd(Map map){
+        mapAdd(map);
+        map.gameChage(this);
+    }
+
+    public void smMapsAdd(List<Map> maps){
+        maps.forEach(this::smMapAdd);
+    }
+
     public void smOstAdd(Ost ost){
         ostAdd(ost);
         ost.gameChange(this);
@@ -83,6 +97,8 @@ public class Game extends BaseDate {
         characterAdd(character);
         character.gameChange(this);
     }
+
+    public void mapAdd(Map map) { this.maps.add(map); }
 
     public void gameInfoChange(GameInfo gameInfo) {
         this.gameInfo = gameInfo;
