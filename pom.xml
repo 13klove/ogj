@@ -39,6 +39,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
+                <!--<maven.test.skip>true</maven.test.skip>-->
                 <build.profile.id>local</build.profile.id>
                 <profileActive>local</profileActive>
             </properties>
