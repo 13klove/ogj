@@ -70,16 +70,30 @@ public class GameServiceTest {
     @Transactional
     public void pageGameTest(){
         //given
-        GameSearch gameSearch = GameSearch.builder().startDate(LocalDate.now().plusDays(-5)).endDate(LocalDate.now().plusDays(1)).pageable(PageRequest.of(0, 10)).build();
+        GameSearch gameSearch = GameSearch.builder().startDate(LocalDate.now().plusDays(-5)).endDate(LocalDate.now().plusDays(1)).build();
 
         //when
-        Page<GameResponse> page = gameService.pageGame(gameSearch);
+        Page<GameResponse> page = gameService.pageGame(gameSearch, PageRequest.of(0, 10));
         for(GameResponse temp : page){
             System.out.println(temp);
         }
 
         //then
         Assertions.assertNotNull(page);
+    }
+
+    @Test
+    @Transactional
+    public void detailGameTest(){
+        //given
+        GameSearch gameSearch = GameSearch.builder().gameId(5l).build();
+
+        //when
+        GameResponse game = gameService.detailGame(gameSearch);
+        System.out.println(game);
+
+        //then
+        Assertions.assertNotNull(game);
     }
 
 

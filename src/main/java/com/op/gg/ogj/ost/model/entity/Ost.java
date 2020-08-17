@@ -1,8 +1,8 @@
-package com.op.gg.ogj.ost.model;
+package com.op.gg.ogj.ost.model.entity;
 
 import com.op.gg.ogj.config.baseDate.BaseDate;
 import com.op.gg.ogj.game.model.entity.Game;
-import com.op.gg.ogj.map.model.Map;
+import com.op.gg.ogj.map.model.entity.Map;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
