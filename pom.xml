@@ -18,6 +18,9 @@
         <java.version>1.8</java.version>
     </properties>
     <!--https://www.it-swarm.dev/ko/java/maven%EC%9D%84-%ED%86%B5%ED%95%B4-spring-boot%EC%97%90%EC%84%9C-%ED%99%9C%EC%84%B1-%ED%94%84%EB%A1%9C%ED%8C%8C%EC%9D%BC-%EA%B5%AC%EC%84%B1/829592928/-->
+    <!--https://wfreud.tistory.com/294-->
+    <!--taskkill /pid 3778 /f-->
+    <!--netstat -ano | findstr 8080-->
     <profiles>
         <profile>
             <id>dev</id>
@@ -29,6 +32,7 @@
             <id>release</id>
             <properties>
                 <profileActive>release</profileActive>
+                <!--<maven.test.skip>true</maven.test.skip>-->
             </properties>
         </profile>
         <profile>
