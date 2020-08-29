@@ -1,0 +1,53 @@
+package com.op.gg.ogj.character.service.valid;
+
+import com.op.gg.ogj.character.model.dto.CharacterParam;
+import com.op.gg.ogj.character.model.entity.Character;
+import com.op.gg.ogj.character.repository.CharacterJpaRepository;
+import com.op.gg.ogj.character.valid.CharacterValid;
+import com.op.gg.ogj.config.exception.domain.ParamValidException;
+import com.op.gg.ogj.game.model.entity.Game;
+import com.op.gg.ogj.game.repository.GameJpaRepository;
+import com.op.gg.ogj.game.valied.GameValid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
+
+import java.util.Optional;
+
+@Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
+public class CharacterValidService {
+
+    private final GameJpaRepository gameJpaRepository;
+    private final CharacterJpaRepository characterJpaRepository;
+
+    public void createCharacterValid(CharacterParam characterParam){
+        if(characterParam.getGameId() == null) throw new ParamValidException(GameValid.GAME_ID_LOCK.getDesc());
+        Optional<Game> game = gameJpaRepository.findById(characterParam.getGameId());
+        game.orElseThrow(() -> new ParamValidException(GameValid.GAME_LOCK.getDesc()));
+
+        if(characterParam.getCharacterType() == null) throw new ParamValidException(CharacterValid.CHARACTER_TYPE_LOCK.getDesc());
+        if(characterParam.getLife() == null) throw new ParamValidException(CharacterValid.CHARACTER_LIFE_LOCK.getDesc());
+        if(characterParam.getEnergy() == null) throw new ParamValidException(CharacterValid.CHARACTER_ENERGY_LOCK.getDesc());
+        if(!StringUtils.hasText(characterParam.getCharacterNm())) throw new ParamValidException(CharacterValid.CHARACTER_NAME_LOCK.getDesc());
+
+        Character character = characterJpaRepository.findCharacterByGameGameIdAndCharacterNm(characterParam.getGameId(), characterParam.getCharacterNm());
+        if(character != null) throw new ParamValidException(CharacterValid.CHARACTER_NAME_EXIST.getDesc());
+    }
+
+    public void updateCharacterValid(CharacterParam characterParam){
+        if(characterParam.getGameId() == null) throw new ParamValidException(GameValid.GAME_ID_LOCK.getDesc());
+
+        if(characterParam.getCharacterId() == null) throw new ParamValidException(CharacterValid.CHARACTER_ID_LOCK.getDesc());
+        if(characterParam.getCharacterType() == null) throw new ParamValidException(CharacterValid.CHARACTER_TYPE_LOCK.getDesc());
+        if(characterParam.getLife() == null) throw new ParamValidException(CharacterValid.CHARACTER_LIFE_LOCK.getDesc());
+        if(characterParam.getEnergy() == null) throw new ParamValidException(CharacterValid.CHARACTER_ENERGY_LOCK.getDesc());
+        if(!StringUtils.hasText(characterParam.getCharacterNm())) throw new ParamValidException(CharacterValid.CHARACTER_NAME_LOCK.getDesc());
+
+        Character character = characterJpaRepository.findCharacterByGameGameIdAndCharacterNm(characterParam.getGameId(), characterParam.getCharacterNm());
+        if(character != null) throw new ParamValidException(CharacterValid.CHARACTER_NAME_EXIST.getDesc());
+    }
+
+}

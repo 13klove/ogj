@@ -1,8 +1,8 @@
 package com.op.gg.ogj.item.model;
 
-import com.op.gg.ogj.character.model.Character;
 import com.op.gg.ogj.config.baseDate.BaseDate;
 import com.op.gg.ogj.itemSpec.model.ItemSpec;
+import com.op.gg.ogj.character.model.entity.Character;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

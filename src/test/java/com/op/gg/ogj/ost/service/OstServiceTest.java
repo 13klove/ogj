@@ -156,7 +156,7 @@ public class OstServiceTest {
     @Transactional
     public void updateOstTest_valid_ostNm_overlap(){
         //given
-        OstParam op = OstParam.builder().gameId(3l).ostId(232l).ostNm("protoss ost").build();
+        OstParam op = OstParam.builder().gameId(3l).ostId(232l).ostNm("Asite ost").build();
 
         //when//then
         Throwable exception = assertThrows(ParamValidException.class, () -> {
