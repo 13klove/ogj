@@ -9,4 +9,6 @@ public interface CharacterDtoDslRepository {
 
     Page<CharacterResponse> pageCharacter(Long gameId, String characterNm, CharacterType characterType, Pageable pageable);
 
+    CharacterResponse detailCharacterByCharacterId(Long characterId);
+
 }

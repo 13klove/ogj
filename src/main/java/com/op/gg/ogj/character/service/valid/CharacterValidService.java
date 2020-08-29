@@ -1,6 +1,7 @@
 package com.op.gg.ogj.character.service.valid;
 
 import com.op.gg.ogj.character.model.dto.CharacterParam;
+import com.op.gg.ogj.character.model.dto.CharacterSearch;
 import com.op.gg.ogj.character.model.entity.Character;
 import com.op.gg.ogj.character.repository.CharacterJpaRepository;
 import com.op.gg.ogj.character.valid.CharacterValid;
@@ -48,6 +49,14 @@ public class CharacterValidService {
 
         Character character = characterJpaRepository.findCharacterByGameGameIdAndCharacterNm(characterParam.getGameId(), characterParam.getCharacterNm());
         if(character != null) throw new ParamValidException(CharacterValid.CHARACTER_NAME_EXIST.getDesc());
+    }
+
+    public void pageCharacterValid(CharacterSearch characterSearch){
+        if(characterSearch.getGameId() == null) throw new ParamValidException(GameValid.GAME_ID_LOCK.getDesc());
+    }
+
+    public void detailCharacterValid(CharacterSearch characterSearch){
+        if(characterSearch.getCharacterId() == null) throw new ParamValidException(CharacterValid.CHARACTER_ID_LOCK.getDesc());
     }
 
 }

@@ -18,6 +18,9 @@ public class CharacterSearch {
     @ApiModelProperty(value = "gameId", notes = "gameId")
     private Long gameId;
 
+    @ApiModelProperty(value = "characterId", notes = "characterId")
+    private Long characterId;
+
     @ApiModelProperty(value = "characterNm", notes = "characterNm")
     private String characterNm;
 

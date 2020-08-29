@@ -41,4 +41,10 @@ public class CharacterCoreService {
         return characterJpaRepository.pageCharacter(characterSearch.getGameId(), characterSearch.getCharacterNm(), characterSearch.getCharacterType(), pageable);
     }
 
+    public CharacterResponse detailCharacter(CharacterSearch characterSearch){
+        return characterJpaRepository.detailCharacterByCharacterId(characterSearch.getCharacterId());
+    }
+
+
+
 }

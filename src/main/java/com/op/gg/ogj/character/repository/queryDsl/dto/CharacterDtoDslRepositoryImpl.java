@@ -33,6 +33,18 @@ public class CharacterDtoDslRepositoryImpl implements CharacterDtoDslRepository{
         return new PageImpl<>(result.getResults(), pageable, result.getTotal());
     }
 
+    @Override
+    public CharacterResponse detailCharacterByCharacterId(Long characterId) {
+        return jpaQueryFactory.select(new QCharacterResponse(character.game.gameId, character.characterId, character.characterNm, character.characterType, character.life, character.energy, character.imgUrl))
+                .from(character)
+                .where(whereCharacterId(characterId))
+                .fetchOne();
+    }
+
+    public BooleanExpression whereCharacterId(Long characterId){
+        return characterId==null?null:character.characterId.eq(characterId);
+    }
+
     public BooleanExpression whereCharacterNm(String characterNm){
         return characterNm==null?null:character.characterNm.eq(characterNm);
     }
