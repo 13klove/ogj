@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 public class CommonController {
 
     @Autowired
-    MockMvc mm;
-    ObjectMapper om = new ObjectMapper();
+    public MockMvc mm;
+    public ObjectMapper om = new ObjectMapper();
 
 }
