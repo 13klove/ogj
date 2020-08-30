@@ -43,10 +43,10 @@ public class MapCoreService {
     public void delMap(MapParam mapParam) {
         if(mapParam.getMapsId() != null && !mapParam.getMapsId().isEmpty()) {
             List<Map> maps = mapJpaRepository.findMapsByMapIdIn(mapParam.getMapsId());
-            mapJpaRepository.deleteAll(maps);
+            maps.stream().forEach(a->a.delMap());
         }else{
             Map map = mapJpaRepository.findById(mapParam.getMapId()).get();
-            mapJpaRepository.delete(map);
+            map.delMap();
         }
     }
 

@@ -24,7 +24,6 @@ import org.springframework.util.StringUtils;
 import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.op.gg.ogj.game.model.entity.QGame.game;
 import static com.op.gg.ogj.gameInfo.model.entity.QGameInfo.gameInfo;
@@ -71,11 +70,9 @@ public class GameDtoDslRepositoryImpl implements GameDtoDslRepository {
                 .where(ostWhereGameId(gameSearch.getGameId()), ostWhereActYn())
                 .fetch();
 
-        List<Long> mapsId = osts.stream().map(a->a.getMapId()).collect(Collectors.toList());
-
         List<MapResponse> maps = jpaQueryFactory.select(new QMapResponse((map.mapNm)))
                 .from(map)
-                .where(mapWhereOstId(mapsId), mapWhereActYn())
+                .where(mapWhereGameId(result.getGameId()), mapWhereActYn())
                 .fetch();
 
         result.setOsts(osts);
@@ -130,7 +127,9 @@ public class GameDtoDslRepositoryImpl implements GameDtoDslRepository {
 
     private BooleanExpression ostWhereActYn() { return ost.actYn.eq(true); }
 
-    private BooleanExpression mapWhereOstId(List<Long> mapId) { return mapId != null&&!mapId.isEmpty()?map.mapId.in(mapId):null; }
+    //private BooleanExpression mapWhereOstId(List<Long> mapId) { return mapId != null&&!mapId.isEmpty()?map.mapId.in(mapId):null; }
+
+    private BooleanExpression mapWhereGameId(Long gameId) { return gameId != null?map.game.gameId.eq(gameId):null; }
 
     private BooleanExpression mapWhereActYn() { return map.actYn.eq(true); }
 

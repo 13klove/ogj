@@ -47,7 +47,7 @@ public class GameControllerTest {
                 .deviceType(DeviceType.PC).price(9900).gameType(GameFactoryMethod.AOS).build();
         String param = objectMapper.writeValueAsString(gameParam);
 
-        mockMvc.perform(put("/api/game/{id}", 80)
+        mockMvc.perform(put("/api/game/{id}", 9)
                 .content(param)
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
@@ -72,7 +72,7 @@ public class GameControllerTest {
     @Test
     @Transactional
     public void detailGameTest() throws Exception{
-        mockMvc.perform(get("/api/game/{id}", 80))
+        mockMvc.perform(get("/api/game/{id}", 13))
                 .andExpect(status().isOk())
                 .andDo(print());
     }

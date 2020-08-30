@@ -62,5 +62,7 @@ public class Map extends BaseDate {
         this.osts.add(ost);
     }
 
+    public void delMap(){this.actYn=false;}
+
 
 }

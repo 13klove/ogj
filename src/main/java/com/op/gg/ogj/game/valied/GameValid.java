@@ -1,16 +1,18 @@
 package com.op.gg.ogj.game.valied;
 
+public enum GameValid {
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
-import java.lang.annotation.*;
+    GAME_ID_LOCK("게임ID가 없습니다."),
+    GAME_LOCK("게임이 존재 하지 않습니다.");
 
-@Documented
-@Constraint(validatedBy = GameValidComponent.class)
-@Target({ElementType.TYPE, ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface GameValid {
-    String message() default "";
-    Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
+    private String desc;
+
+    GameValid(String desc){
+        this.desc = desc;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
 }

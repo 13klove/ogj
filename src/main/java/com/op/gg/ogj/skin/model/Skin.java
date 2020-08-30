@@ -1,7 +1,7 @@
 package com.op.gg.ogj.skin.model;
 
-import com.op.gg.ogj.character.model.Character;
 import com.op.gg.ogj.config.baseDate.BaseDate;
+import com.op.gg.ogj.character.model.entity.Character;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -49,5 +49,7 @@ public class Skin extends BaseDate {
     public void characterChange(Character character){
         this.character = character;
     }
+
+    public void delSkin() { this.actYn = false; }
 
 }

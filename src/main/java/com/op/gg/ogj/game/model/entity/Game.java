@@ -1,12 +1,12 @@
 package com.op.gg.ogj.game.model.entity;
 
 import com.google.common.collect.Lists;
-import com.op.gg.ogj.character.model.Character;
 import com.op.gg.ogj.config.baseDate.BaseDate;
 import com.op.gg.ogj.game.model.DeviceType;
 import com.op.gg.ogj.game.model.GameFactoryMethod;
 import com.op.gg.ogj.gameInfo.model.entity.GameInfo;
 import com.op.gg.ogj.map.model.entity.Map;
+import com.op.gg.ogj.character.model.entity.Character;
 import com.op.gg.ogj.ost.model.entity.Ost;
 import lombok.AccessLevel;
 import lombok.Getter;
