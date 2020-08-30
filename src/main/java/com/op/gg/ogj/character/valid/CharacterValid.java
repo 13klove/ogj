@@ -7,7 +7,8 @@ public enum CharacterValid{
     CHARACTER_NAME_LOCK("케릭터 이름은 필수 입니다."),
     CHARACTER_TYPE_LOCK("케릭터 타입은 필수 입니다."),
     CHARACTER_LIFE_LOCK("케릭터 생명력은 필수 입니다."),
-    CHARACTER_ENERGY_LOCK("케릭터 에어지는 필수 입니다.");
+    CHARACTER_ENERGY_LOCK("케릭터 에어지는 필수 입니다."),
+    CHARACTER_NO_HAVE("케릭터가 존재하지 않습니다.");
 
     private String desc;
 

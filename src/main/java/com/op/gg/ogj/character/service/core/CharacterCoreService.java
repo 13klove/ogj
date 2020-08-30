@@ -7,11 +7,15 @@ import com.op.gg.ogj.character.model.entity.Character;
 import com.op.gg.ogj.character.repository.CharacterJpaRepository;
 import com.op.gg.ogj.game.model.entity.Game;
 import com.op.gg.ogj.game.repository.GameJpaRepository;
+import com.op.gg.ogj.skill.model.Skill;
+import com.op.gg.ogj.skin.model.Skin;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -45,6 +49,22 @@ public class CharacterCoreService {
         return characterJpaRepository.detailCharacterByCharacterId(characterSearch.getCharacterId());
     }
 
+    @Transactional
+    public void delCharacter(CharacterParam characterParam) {
+        Character character = characterJpaRepository.findCharacterRelInfoByGameIdCharacterId(characterParam.getGameId(), characterParam.getCharacterId());
+        character.delCharacter();
+        character.getSkills().forEach(Skill::delSkill);
+        character.getSkins().forEach(Skin::delSkin);
+        character.getItems().forEach(a->{a.getItemSpec().delItemSpec(); a.delItem();});
+    }
 
-
+    public void delCharacters(CharacterParam characterParam) {
+        List<Character> characters = characterJpaRepository.findCharacterRelInfoByGameIdCharactersId(characterParam.getGameId(), characterParam.getCharactersId());
+        characters.forEach(a->{
+            a.delCharacter();
+            a.getSkills().forEach(Skill::delSkill);
+            a.getSkins().forEach(Skin::delSkin);
+            a.getItems().forEach(b->{b.getItemSpec().delItemSpec(); b.delItem();});
+        });
+    }
 }

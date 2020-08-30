@@ -67,4 +67,6 @@ public class Skill extends BaseDate {
         this.character = character;
     }
 
+    public void delSkill() { this.actYn = false; }
+
 }

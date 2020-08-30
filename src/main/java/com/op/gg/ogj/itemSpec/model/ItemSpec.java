@@ -40,4 +40,6 @@ public class ItemSpec extends BaseDate {
         return this;
     }
 
+    public void delItemSpec() { this.actYn = false; }
+
 }

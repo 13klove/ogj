@@ -28,7 +28,7 @@ public class CharacterDtoDslRepositoryImpl implements CharacterDtoDslRepository{
                 .from(character)
                 .limit(pageable.getPageSize())
                 .offset(pageable.getOffset())
-                .where(gameWhereGameId(gameId), whereCharacterNm(characterNm), whereCharacterType(characterType))
+                .where(gameWhereGameId(gameId), whereCharacterNm(characterNm), whereCharacterType(characterType), whereActYn(true))
                 .fetchResults();
         return new PageImpl<>(result.getResults(), pageable, result.getTotal());
     }
@@ -37,7 +37,7 @@ public class CharacterDtoDslRepositoryImpl implements CharacterDtoDslRepository{
     public CharacterResponse detailCharacterByCharacterId(Long characterId) {
         return jpaQueryFactory.select(new QCharacterResponse(character.game.gameId, character.characterId, character.characterNm, character.characterType, character.life, character.energy, character.imgUrl))
                 .from(character)
-                .where(whereCharacterId(characterId))
+                .where(whereCharacterId(characterId), whereActYn(true))
                 .fetchOne();
     }
 
@@ -51,6 +51,10 @@ public class CharacterDtoDslRepositoryImpl implements CharacterDtoDslRepository{
 
     public BooleanExpression whereCharacterType(CharacterType characterType){
         return characterType==null?null:character.characterType.eq(characterType);
+    }
+
+    public BooleanExpression whereActYn(Boolean actYn){
+        return actYn==null?null:character.actYn.eq(actYn);
     }
 
     public BooleanExpression gameWhereGameId(Long gameId){

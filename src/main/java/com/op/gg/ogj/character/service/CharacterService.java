@@ -41,4 +41,16 @@ public class CharacterService {
         return characterCoreService.detailCharacter(characterSearch);
     }
 
+    @Transactional
+    public void delCharacter(CharacterParam characterParam){
+        characterValidService.delCharacterValid(characterParam);
+        characterCoreService.delCharacter(characterParam);
+    }
+
+    @Transactional
+    public void delCharacters(CharacterParam characterParam){
+        characterValidService.delCharactersValid(characterParam);
+        characterCoreService.delCharacters(characterParam);
+    }
+
 }

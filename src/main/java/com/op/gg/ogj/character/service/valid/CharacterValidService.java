@@ -59,4 +59,15 @@ public class CharacterValidService {
         if(characterSearch.getCharacterId() == null) throw new ParamValidException(CharacterValid.CHARACTER_ID_LOCK.getDesc());
     }
 
+    public void delCharacterValid(CharacterParam characterParam) {
+        if(characterParam.getGameId() == null) throw new ParamValidException(GameValid.GAME_ID_LOCK.getDesc());
+        if(characterParam.getCharacterId() == null) throw new ParamValidException(CharacterValid.CHARACTER_ID_LOCK.getDesc());
+        Optional<Character> character = characterJpaRepository.findCharacterByGameGameIdAndCharacterId(characterParam.getGameId(), characterParam.getCharacterId());
+        character.orElseThrow(() -> new ParamValidException(CharacterValid.CHARACTER_NO_HAVE.getDesc()));
+    }
+
+    public void delCharactersValid(CharacterParam characterParam) {
+        if(characterParam.getGameId() == null) throw new ParamValidException(GameValid.GAME_ID_LOCK.getDesc());
+        if(characterParam.getCharactersId() == null || characterParam.getCharactersId().isEmpty()) throw new ParamValidException(CharacterValid.CHARACTER_ID_LOCK.getDesc());
+    }
 }

@@ -50,4 +50,6 @@ public class Skin extends BaseDate {
         this.character = character;
     }
 
+    public void delSkin() { this.actYn = false; }
+
 }

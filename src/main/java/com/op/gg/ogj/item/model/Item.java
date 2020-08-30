@@ -62,4 +62,6 @@ public class Item extends BaseDate {
         this.character = character;
     }
 
+    public void delItem() { this.actYn = false; }
+
 }

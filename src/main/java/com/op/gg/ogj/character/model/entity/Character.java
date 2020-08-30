@@ -113,4 +113,6 @@ public class Character extends BaseDate {
         items.add(item);
     }
 
+    public void delCharacter() {this.actYn = false;}
+
 }

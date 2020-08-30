@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @ApiModel
@@ -35,5 +37,8 @@ public class CharacterParam {
 
     @ApiModelProperty(value = "imgUrl", notes = "imgUrl")
     private String imgUrl;
+
+    @ApiModelProperty(value = "charactersId", notes = "charactersId")
+    private List<Long> charactersId;
 
 }
