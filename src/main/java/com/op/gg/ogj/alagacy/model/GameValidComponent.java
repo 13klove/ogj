@@ -1,4 +1,4 @@
-package com.op.gg.ogj.game.valied;
+package com.op.gg.ogj.alagacy.model;
 
 import com.op.gg.ogj.game.model.dto.GameParam;
 import com.op.gg.ogj.game.repository.GameJpaRepository;

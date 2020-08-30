@@ -1,6 +1,7 @@
-package com.op.gg.ogj.character.model;
+package com.op.gg.ogj.character.model.entity;
 
 import com.google.common.collect.Lists;
+import com.op.gg.ogj.character.model.CharacterType;
 import com.op.gg.ogj.config.baseDate.BaseDate;
 import com.op.gg.ogj.game.model.entity.Game;
 import com.op.gg.ogj.item.model.Item;
@@ -9,6 +10,7 @@ import com.op.gg.ogj.skin.model.Skin;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "character")
+@ToString(exclude = {"game", "skills", "items"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Character extends BaseDate {
 
@@ -61,6 +64,14 @@ public class Character extends BaseDate {
         return new Character(characterNm, characterType, life, energy, imgUrl).characterCreateDefault();
     }
 
+    public void updateCharacter(String characterNm, CharacterType characterType, Integer life, Integer energy, String imgUrl) {
+        this.characterNm = characterNm;
+        this.characterType = characterType;
+        this.life = life;
+        this.energy = energy;
+        this.imgUrl = imgUrl;
+    }
+
     public Character characterCreateDefault(){
         this.actYn = true;
         return this;
@@ -86,6 +97,11 @@ public class Character extends BaseDate {
         item.characterChange(this);
     }
 
+    public void smChangeItems(List<Item> items){
+        this.items = items;
+        this.items.forEach(a->{a.characterChange(this);});
+    }
+
     public void skinAdd(Skin skin){
         skins.add(skin);
     }
@@ -101,4 +117,7 @@ public class Character extends BaseDate {
     public void itemAdd(Item item) {
         items.add(item);
     }
+
+    public void delCharacter() {this.actYn = false;}
+
 }

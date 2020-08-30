@@ -31,6 +31,24 @@ public class Ost extends BaseDate {
     @JoinColumn(name = "map_id")
     private Map map;
 
+    public Ost(String ostNm){
+        this.ostNm = ostNm;
+    }
+
+    public static Ost createOst(String ostNm){
+        Ost ost = new Ost(ostNm);
+        return ost.ostCreateDefault();
+    }
+
+    public void updateOst(String ostNm){
+        this.ostNm = ostNm;
+    }
+
+    public Ost ostCreateDefault(){
+        this.actYn = true;
+        return this;
+    }
+
     public void gameChange(Game game) {
         this.game = game;
     }
@@ -48,4 +66,8 @@ public class Ost extends BaseDate {
     public void mapChange(Map map) {
         this.map = map;
     }
+
+    public void delOst(){this.actYn=false;}
+
+    public void delMap(){this.map=null;}
 }

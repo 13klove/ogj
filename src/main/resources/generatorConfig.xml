@@ -29,7 +29,7 @@
             <property name="trimStrings" value="false"/>
         </javaModelGenerator>
 
-        <table tableName="MEMBER" domainObjectName="Member"/>
+        <table tableName="character" domainObjectName="character"/>
 
     </context>
 </generatorConfiguration>
