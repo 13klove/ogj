@@ -58,6 +58,7 @@ public class CharacterCoreService {
         character.getItems().forEach(a->{a.getItemSpec().delItemSpec(); a.delItem();});
     }
 
+    @Transactional
     public void delCharacters(CharacterParam characterParam) {
         List<Character> characters = characterJpaRepository.findCharacterRelInfoByGameIdCharactersId(characterParam.getGameId(), characterParam.getCharactersId());
         characters.forEach(a->{

@@ -14,7 +14,6 @@ import static com.op.gg.ogj.item.model.QItem.item;
 import static com.op.gg.ogj.itemSpec.model.QItemSpec.itemSpec;
 import static com.op.gg.ogj.skill.model.QSkill.skill;
 
-
 public class CharacterDslRepositoryImpl implements CharacterDslRepository{
 
     private final JPAQueryFactory jpaQueryFactory;
@@ -34,6 +33,7 @@ public class CharacterDslRepositoryImpl implements CharacterDslRepository{
     @Override
     public Character findCharacterRelInfoByGameIdCharacterId(Long gameId, Long characterId) {
         Character result = jpaQueryFactory.select(character)
+                .distinct()
                 .from(character)
                 .leftJoin(character.skills, skill).fetchJoin()
                 .where(whereCharacterId(characterId), gameWhereGameId(gameId))
@@ -44,10 +44,10 @@ public class CharacterDslRepositoryImpl implements CharacterDslRepository{
         List<Item> items = jpaQueryFactory.select(item)
                 .from(item)
                 .join(item.itemSpec, itemSpec).fetchJoin()
-                .where(itemWhereCharacterId(characterId), itemWhereActYn(true), itemSpecWhereActYn(true))
+                .where(itemWhereCharacterId(characterId), itemWhereActYn(true))
                 .fetch();
 
-        items.stream().forEach(result::smItemAdd);
+        result.smChangeItems(items);
 
         return result;
     }
@@ -56,9 +56,9 @@ public class CharacterDslRepositoryImpl implements CharacterDslRepository{
     public List<Character> findCharacterRelInfoByGameIdCharactersId(Long gameId, List<Long> charactersId) {
         List<Character> results = jpaQueryFactory.select(character)
                 .from(character)
-                .leftJoin(character.items, item)
-                .leftJoin(item.itemSpec, itemSpec)
-                .where(gameWhereGameId(gameId), whereCharactersId(charactersId), itemSpecWhereActYn(true), itemWhereActYn(true))
+                .leftJoin(character.items, item).fetchJoin()
+                .leftJoin(item.itemSpec, itemSpec).fetchJoin()
+                .where(gameWhereGameId(gameId), whereCharactersId(charactersId))
                 .fetch();
 
         results.forEach(a->{a.getSkins(); a.getSkills();});
@@ -79,8 +79,5 @@ public class CharacterDslRepositoryImpl implements CharacterDslRepository{
         return actYn==null?null:item.actYn.eq(actYn);
     }
 
-    public BooleanExpression itemSpecWhereActYn(Boolean actYn){
-        return actYn==null?null: itemSpec.actYn.eq(actYn);
-    }
-
 }
+

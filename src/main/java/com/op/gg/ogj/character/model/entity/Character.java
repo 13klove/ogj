@@ -97,6 +97,11 @@ public class Character extends BaseDate {
         item.characterChange(this);
     }
 
+    public void smChangeItems(List<Item> items){
+        this.items = items;
+        this.items.forEach(a->{a.characterChange(this);});
+    }
+
     public void skinAdd(Skin skin){
         skins.add(skin);
     }

@@ -19,7 +19,7 @@ spring:
         show_sql: true
         format_sql: true
         use_sql_comment: true
-      hibernate.default_batch_fetch_size: 1000
+        default_batch_fetch_size: 1000
 
 
 logging.level:

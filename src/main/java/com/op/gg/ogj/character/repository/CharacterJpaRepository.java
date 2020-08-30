@@ -11,6 +11,8 @@ public interface CharacterJpaRepository extends JpaRepository<Character, Long>, 
 
     Character findCharacterByGameGameIdAndCharacterNm(Long gameId, String characterNm);
 
+    Character findCharacterByGameGameIdAndCharacterIdIsNotAndCharacterNm(Long gameId, Long characterId, String characterNm);
+
     Optional<Character> findCharacterByGameGameIdAndCharacterId(Long gameId, Long characterId);
 
 }

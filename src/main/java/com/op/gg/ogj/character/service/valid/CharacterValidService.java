@@ -26,13 +26,13 @@ public class CharacterValidService {
 
     public void createCharacterValid(CharacterParam characterParam){
         if(characterParam.getGameId() == null) throw new ParamValidException(GameValid.GAME_ID_LOCK.getDesc());
-        Optional<Game> game = gameJpaRepository.findById(characterParam.getGameId());
-        game.orElseThrow(() -> new ParamValidException(GameValid.GAME_LOCK.getDesc()));
-
         if(characterParam.getCharacterType() == null) throw new ParamValidException(CharacterValid.CHARACTER_TYPE_LOCK.getDesc());
         if(characterParam.getLife() == null) throw new ParamValidException(CharacterValid.CHARACTER_LIFE_LOCK.getDesc());
         if(characterParam.getEnergy() == null) throw new ParamValidException(CharacterValid.CHARACTER_ENERGY_LOCK.getDesc());
         if(!StringUtils.hasText(characterParam.getCharacterNm())) throw new ParamValidException(CharacterValid.CHARACTER_NAME_LOCK.getDesc());
+
+        Optional<Game> game = gameJpaRepository.findById(characterParam.getGameId());
+        game.orElseThrow(() -> new ParamValidException(GameValid.GAME_LOCK.getDesc()));
 
         Character character = characterJpaRepository.findCharacterByGameGameIdAndCharacterNm(characterParam.getGameId(), characterParam.getCharacterNm());
         if(character != null) throw new ParamValidException(CharacterValid.CHARACTER_NAME_EXIST.getDesc());
@@ -47,7 +47,7 @@ public class CharacterValidService {
         if(characterParam.getEnergy() == null) throw new ParamValidException(CharacterValid.CHARACTER_ENERGY_LOCK.getDesc());
         if(!StringUtils.hasText(characterParam.getCharacterNm())) throw new ParamValidException(CharacterValid.CHARACTER_NAME_LOCK.getDesc());
 
-        Character character = characterJpaRepository.findCharacterByGameGameIdAndCharacterNm(characterParam.getGameId(), characterParam.getCharacterNm());
+        Character character = characterJpaRepository.findCharacterByGameGameIdAndCharacterIdIsNotAndCharacterNm(characterParam.getGameId(), characterParam.getCharacterId(), characterParam.getCharacterNm());
         if(character != null) throw new ParamValidException(CharacterValid.CHARACTER_NAME_EXIST.getDesc());
     }
 
