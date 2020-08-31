@@ -36,6 +36,21 @@ public class SkillService {
         return skillCoreService.listSkill(skillSearch);
     }
 
+    public SkillResponse detailSkill(SkillSearch skillSearch){
+        skillValidService.detailSkillValid(skillSearch);
+        return skillCoreService.detailSkill(skillSearch);
+    }
 
+    @Transactional
+    public void delSkill(SkillParam skillParam){
+        skillValidService.delSkillValid(skillParam);
+        skillCoreService.delSkill(skillParam);
+    }
+
+    @Transactional
+    public void delSkills(SkillParam skillParam){
+        skillValidService.delSkillsValid(skillParam);
+        skillCoreService.delSkillsValid(skillParam);
+    }
 
 }

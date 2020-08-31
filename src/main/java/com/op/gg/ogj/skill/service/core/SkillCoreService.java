@@ -1,5 +1,6 @@
 package com.op.gg.ogj.skill.service.core;
 
+import com.op.gg.ogj.character.repository.CharacterJpaRepository;
 import com.op.gg.ogj.skill.model.dto.SkillParam;
 import com.op.gg.ogj.skill.model.dto.SkillResponse;
 import com.op.gg.ogj.skill.model.dto.SkillSearch;
@@ -11,11 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class SkillCoreService {
 
     private final SkillJpaRepository skillJpaRepository;
+    private final CharacterJpaRepository characterJpaRepository;
 
     @Transactional
     public Long createSkill(SkillParam skillParam) {
@@ -29,5 +31,15 @@ public class SkillCoreService {
 
     public List<SkillResponse> listSkill(SkillSearch skillSearch) {
         return null;
+    }
+
+    public SkillResponse detailSkill(SkillSearch skillSearch) {
+        return null;
+    }
+
+    public void delSkill(SkillParam skillParam) {
+    }
+
+    public void delSkillsValid(SkillParam skillParam) {
     }
 }
