@@ -1,7 +1,8 @@
-package com.op.gg.ogj.skill.model;
+package com.op.gg.ogj.skill.model.entity;
 
 import com.op.gg.ogj.config.baseDate.BaseDate;
 import com.op.gg.ogj.character.model.entity.Character;
+import com.op.gg.ogj.skill.model.SkillType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
