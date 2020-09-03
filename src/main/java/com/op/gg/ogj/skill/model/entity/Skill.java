@@ -17,7 +17,7 @@ public class Skill extends BaseDate {
 
     @Id
     @GeneratedValue
-    private Long sillId;
+    private Long skillId;
 
     private String skillNm;
 
@@ -52,6 +52,16 @@ public class Skill extends BaseDate {
 
     public static Skill createSkill(String skillNm, Integer useEnergy, Integer useLife, Integer damage, SkillType skillType, Boolean ulimateYn, String imgUrl){
         return new Skill(skillNm, useEnergy, useLife, damage, skillType, ulimateYn, imgUrl).skillCreateDefault();
+    }
+
+    public void updateSkill(String skillNm, Integer useEnergy, Integer useLife, Integer damage, SkillType skillType, Boolean ulimateYn, String imgUrl){
+        this.skillNm = skillNm;
+        this.useEnergy = useEnergy;
+        this.useLife = useLife;
+        this.damage = damage;
+        this.skillType = skillType;
+        this.ulimateYn = ulimateYn;
+        this.imgUrl = imgUrl;
     }
 
     public Skill skillCreateDefault(){

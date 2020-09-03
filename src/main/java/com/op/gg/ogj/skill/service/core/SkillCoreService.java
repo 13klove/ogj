@@ -1,9 +1,11 @@
 package com.op.gg.ogj.skill.service.core;
 
+import com.op.gg.ogj.character.model.entity.Character;
 import com.op.gg.ogj.character.repository.CharacterJpaRepository;
 import com.op.gg.ogj.skill.model.dto.SkillParam;
 import com.op.gg.ogj.skill.model.dto.SkillResponse;
 import com.op.gg.ogj.skill.model.dto.SkillSearch;
+import com.op.gg.ogj.skill.model.entity.Skill;
 import com.op.gg.ogj.skill.repository.SkillJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,25 +23,37 @@ public class SkillCoreService {
 
     @Transactional
     public Long createSkill(SkillParam skillParam) {
-        return null;
+        Character character = characterJpaRepository.findById(skillParam.getSkillId()).get();
+        Skill skill = Skill.createSkill(skillParam.getSkillNm(), skillParam.getUseEnergy(), skillParam.getUseLife(), skillParam.getDamage(), skillParam.getSkillType(), skillParam.getUlimateYn(), skillParam.getImgUrl());
+        skill.smCharacterChange(character);
+        skillJpaRepository.save(skill);
+        return skill.getSkillId();
     }
 
     @Transactional
     public Long updateSkill(SkillParam skillParam) {
-        return null;
+        Skill skill = skillJpaRepository.findSkillAndCharacterBySkillId(skillParam.getSkillId());
+        skill.updateSkill(skillParam.getSkillNm(), skillParam.getUseEnergy(), skillParam.getUseLife(), skillParam.getDamage(), skillParam.getSkillType(), skillParam.getUlimateYn(), skillParam.getImgUrl());
+        return skill.getSkillId();
     }
 
     public List<SkillResponse> listSkill(SkillSearch skillSearch) {
-        return null;
+        return skillJpaRepository.pageSkill(skillSearch);
     }
 
     public SkillResponse detailSkill(SkillSearch skillSearch) {
-        return null;
+        return skillJpaRepository.findSkillBySkillId(skillSearch.getSkillId());
     }
 
+    @Transactional
     public void delSkill(SkillParam skillParam) {
+        Skill skill = skillJpaRepository.findSkillAndCharacterBySkillId(skillParam.getSkillId());
+        skill.delSkill();
     }
 
+    @Transactional
     public void delSkillsValid(SkillParam skillParam) {
+        List<Skill> skills = skillJpaRepository.findSkillsBySkillsId(skillParam.getSkillsId());
+        skills.forEach(a->{a.delSkill();});
     }
 }

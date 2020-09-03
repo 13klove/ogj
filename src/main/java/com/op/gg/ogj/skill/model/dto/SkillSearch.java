@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SkillSearch {
 
-    private Long sillId;
+    private Long skillId;
 
     private Long characterId;
 
