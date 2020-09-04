@@ -1,6 +1,7 @@
 package com.op.gg.ogj.skill.service;
 
 import com.google.common.collect.Lists;
+import com.op.gg.ogj.config.exception.domain.ParamValidException;
 import com.op.gg.ogj.skill.model.SkillType;
 import com.op.gg.ogj.skill.model.dto.SkillParam;
 import com.op.gg.ogj.skill.model.dto.SkillResponse;
@@ -16,6 +17,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @Slf4j
 @SpringBootTest
@@ -45,6 +47,30 @@ public class SkillServiceTest {
 
         tempsId.add(tempId1);
         tempsId.add(tempId2);
+    }
+
+    @Test
+    @Transactional
+    public void createSkillTest_characterId(){
+        SkillParam skillParam = SkillParam.builder().build();
+
+        Throwable exception = assertThrows(ParamValidException.class, () ->{
+            skillService.createSkill(skillParam);
+        });
+
+        log.info("exception: {}", exception.getMessage());
+    }
+
+    @Test
+    @Transactional
+    public void createSkillTest_skillName(){
+        SkillParam skillParam = SkillParam.builder().characterId(359l).build();
+
+        Throwable exception = assertThrows(ParamValidException.class, () ->{
+            skillService.createSkill(skillParam);
+        });
+
+        log.info("exception: {}", exception.getMessage());
     }
 
     @Test
