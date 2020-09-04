@@ -23,7 +23,7 @@ public class SkillCoreService {
 
     @Transactional
     public Long createSkill(SkillParam skillParam) {
-        Character character = characterJpaRepository.findById(skillParam.getSkillId()).get();
+        Character character = characterJpaRepository.findById(skillParam.getCharacterId()).get();
         Skill skill = Skill.createSkill(skillParam.getSkillNm(), skillParam.getUseEnergy(), skillParam.getUseLife(), skillParam.getDamage(), skillParam.getSkillType(), skillParam.getUlimateYn(), skillParam.getImgUrl());
         skill.smCharacterChange(character);
         skillJpaRepository.save(skill);

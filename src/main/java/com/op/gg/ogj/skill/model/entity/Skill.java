@@ -6,12 +6,14 @@ import com.op.gg.ogj.skill.model.SkillType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
 @Table(name = "skill")
+@DynamicUpdate
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Skill extends BaseDate {
 
