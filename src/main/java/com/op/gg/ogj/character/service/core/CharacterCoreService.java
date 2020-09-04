@@ -7,7 +7,7 @@ import com.op.gg.ogj.character.model.entity.Character;
 import com.op.gg.ogj.character.repository.CharacterJpaRepository;
 import com.op.gg.ogj.game.model.entity.Game;
 import com.op.gg.ogj.game.repository.GameJpaRepository;
-import com.op.gg.ogj.skill.model.Skill;
+import com.op.gg.ogj.skill.model.entity.Skill;
 import com.op.gg.ogj.skin.model.Skin;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

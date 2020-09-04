@@ -12,7 +12,8 @@ import static com.op.gg.ogj.character.model.entity.QCharacter.character;
 import static com.op.gg.ogj.game.model.entity.QGame.game;
 import static com.op.gg.ogj.item.model.QItem.item;
 import static com.op.gg.ogj.itemSpec.model.QItemSpec.itemSpec;
-import static com.op.gg.ogj.skill.model.QSkill.skill;
+import static com.op.gg.ogj.skill.model.entity.QSkill.skill;
+
 
 public class CharacterDslRepositoryImpl implements CharacterDslRepository{
 
