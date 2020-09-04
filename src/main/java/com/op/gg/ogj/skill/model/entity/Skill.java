@@ -1,22 +1,25 @@
-package com.op.gg.ogj.skill.model;
+package com.op.gg.ogj.skill.model.entity;
 
 import com.op.gg.ogj.config.baseDate.BaseDate;
 import com.op.gg.ogj.character.model.entity.Character;
+import com.op.gg.ogj.skill.model.SkillType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
 @Table(name = "skill")
+@DynamicUpdate
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Skill extends BaseDate {
 
     @Id
     @GeneratedValue
-    private Long sillId;
+    private Long skillId;
 
     private String skillNm;
 
@@ -51,6 +54,16 @@ public class Skill extends BaseDate {
 
     public static Skill createSkill(String skillNm, Integer useEnergy, Integer useLife, Integer damage, SkillType skillType, Boolean ulimateYn, String imgUrl){
         return new Skill(skillNm, useEnergy, useLife, damage, skillType, ulimateYn, imgUrl).skillCreateDefault();
+    }
+
+    public void updateSkill(String skillNm, Integer useEnergy, Integer useLife, Integer damage, SkillType skillType, Boolean ulimateYn, String imgUrl){
+        this.skillNm = skillNm;
+        this.useEnergy = useEnergy;
+        this.useLife = useLife;
+        this.damage = damage;
+        this.skillType = skillType;
+        this.ulimateYn = ulimateYn;
+        this.imgUrl = imgUrl;
     }
 
     public Skill skillCreateDefault(){

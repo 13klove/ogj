@@ -42,6 +42,7 @@
             </activation>
             <properties>
                 <profileActive>local</profileActive>
+                <maven.test.skip>true</maven.test.skip>
             </properties>
         </profile>
     </profiles>
