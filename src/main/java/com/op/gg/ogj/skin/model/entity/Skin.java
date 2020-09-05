@@ -1,4 +1,4 @@
-package com.op.gg.ogj.skin.model;
+package com.op.gg.ogj.skin.model.entity;
 
 import com.op.gg.ogj.config.baseDate.BaseDate;
 import com.op.gg.ogj.character.model.entity.Character;

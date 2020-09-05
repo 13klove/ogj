@@ -6,7 +6,7 @@ import com.op.gg.ogj.config.baseDate.BaseDate;
 import com.op.gg.ogj.game.model.entity.Game;
 import com.op.gg.ogj.item.model.Item;
 import com.op.gg.ogj.skill.model.entity.Skill;
-import com.op.gg.ogj.skin.model.Skin;
+import com.op.gg.ogj.skin.model.entity.Skin;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
