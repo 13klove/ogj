@@ -36,6 +36,11 @@ public class Skin extends BaseDate {
         return new Skin(skinNm, price).skinCreateDefault();
     }
 
+    public void updateSkin(String skinNm, Long price){
+        this.skinNm = skinNm;
+        this.price = price;
+    }
+
     public Skin skinCreateDefault(){
         this.actYn = true;
         return this;
