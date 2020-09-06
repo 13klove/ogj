@@ -5,11 +5,13 @@ import com.op.gg.ogj.character.model.entity.Character;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
+@DynamicUpdate
 @Table(name = "skin")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Skin extends BaseDate {

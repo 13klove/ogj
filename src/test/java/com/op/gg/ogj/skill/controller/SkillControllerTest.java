@@ -81,5 +81,4 @@ public class SkillControllerTest extends CommonController {
                 .andExpect(status().isOk());
     }
 
-
 }
