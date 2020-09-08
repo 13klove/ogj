@@ -30,7 +30,7 @@ public class ItemCoreService {
     }
 
     public ItemResponse detailItem(ItemSearch itemSearch) {
-        return null;////abc
+        return null;
     }
 
     public void delItem(ItemParam itemParam) {
