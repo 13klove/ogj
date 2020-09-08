@@ -1,6 +1,6 @@
 package com.op.gg.ogj.config.valid;
 
-public interface CommonValid<T> {
+public interface ObjectValid<T> {
 
     void validLogic(T param);
 

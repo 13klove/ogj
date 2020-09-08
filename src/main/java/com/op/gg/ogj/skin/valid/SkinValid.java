@@ -1,11 +1,11 @@
 package com.op.gg.ogj.skin.valid;
 
 import com.op.gg.ogj.config.exception.domain.ParamValidException;
-import com.op.gg.ogj.config.valid.CommonValid;
+import com.op.gg.ogj.config.valid.ObjectValid;
 import com.op.gg.ogj.skin.model.dto.SkinParam;
 import org.springframework.util.StringUtils;
 
-public enum SkinValid implements CommonValid<SkinParam> {
+public enum SkinValid implements ObjectValid<SkinParam> {
 
     SKIN_SKIN_ID_LOCK("스킨ID가 없습니다."){
         public void validLogic(SkinParam param) {

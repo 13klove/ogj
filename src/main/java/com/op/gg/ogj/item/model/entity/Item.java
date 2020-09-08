@@ -1,6 +1,7 @@
-package com.op.gg.ogj.item.model;
+package com.op.gg.ogj.item.model.entity;
 
 import com.op.gg.ogj.config.baseDate.BaseDate;
+import com.op.gg.ogj.item.model.ItemType;
 import com.op.gg.ogj.itemSpec.model.ItemSpec;
 import com.op.gg.ogj.character.model.entity.Character;
 import lombok.AccessLevel;
