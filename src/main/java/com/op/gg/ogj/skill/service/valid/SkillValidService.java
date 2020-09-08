@@ -27,9 +27,6 @@ public class SkillValidService {
     public void createSkillValid(SkillParam skillParam) {
         createUpdateValid(skillParam);
 
-        Optional<Character> optionalCharacter = characterJpaRepository.findById(skillParam.getCharacterId());
-        optionalCharacter.orElseThrow(() -> new ParamValidException(CharacterValid.CHARACTER_NO_HAVE.getDesc()));
-
         Skill skill = skillJpaRepository.findSkillByCharacter_CharacterIdAndSkillNm(skillParam.getCharacterId(), skillParam.getSkillNm());
         if(skill!=null) throw new ParamValidException(SkillValid.SKILL_EXIT_SKILL.getDesc());
     }
@@ -71,5 +68,8 @@ public class SkillValidService {
         SkillValid.SKILL_DAMAGE_LOCK.validLogic(skillParam);
         SkillValid.SKILL_SKILL_TYPE_LOCK.validLogic(skillParam);
         SkillValid.SKILL_ULIMATE_YN.validLogic(skillParam);
+
+        Optional<Character> optionalCharacter = characterJpaRepository.findById(skillParam.getCharacterId());
+        optionalCharacter.orElseThrow(() -> new ParamValidException(CharacterValid.CHARACTER_NO_HAVE.getDesc()));
     }
 }
