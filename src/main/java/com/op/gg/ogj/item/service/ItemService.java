@@ -21,17 +21,20 @@ public class ItemService {
 
     @Transactional
     public Long createItem(ItemParam itemParam){
+        //123
         itemValidService.createItemValid(itemParam);
         return itemCoreService.createItem(itemParam);
     }
 
     @Transactional
     public Long updateItem(ItemParam itemParam){
+        //456
         itemValidService.updateItemValid(itemParam);
         return itemCoreService.updateItem(itemParam);
     }
 
     public Page<ItemResponse> pageItem(ItemSearch itemSearch, Pageable pageable){
+        //789
         itemValidService.pageItemValid(itemSearch);
         return itemCoreService.pageItem(itemSearch, pageable);
     }
