@@ -27,16 +27,19 @@ public class ItemService {
 
     @Transactional
     public Long updateItem(ItemParam itemParam){
+        //77777
         itemValidService.updateItemValid(itemParam);
         return itemCoreService.updateItem(itemParam);
     }
 
     public Page<ItemResponse> pageItem(ItemSearch itemSearch, Pageable pageable){
+        //7777788888
         itemValidService.pageItemValid(itemSearch);
         return itemCoreService.pageItem(itemSearch, pageable);
     }
 
     public ItemResponse detailItem(ItemSearch itemSearch){
+        //77778989
         itemValidService.detailItemValid(itemSearch);
         return itemCoreService.detailItem(itemSearch);
     }
