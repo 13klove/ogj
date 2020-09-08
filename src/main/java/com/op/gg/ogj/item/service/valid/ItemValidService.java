@@ -12,20 +12,21 @@ import org.springframework.transaction.annotation.Transactional;
 public class ItemValidService {
 
     public void createItemValid(ItemParam itemParam) {
-        //123
     }
 
     public void updateItemValid(ItemParam itemParam) {
-        //123
     }
 
     public void pageItemValid(ItemSearch itemSearch) {
+        //1111111111
     }
 
     public void detailItemValid(ItemSearch itemSearch) {
+        //1111111111
     }
 
     public void delItemValid(ItemParam itemParam) {
+        //1111111111
     }
 
     public void delItemsValid(ItemParam itemParam) {
