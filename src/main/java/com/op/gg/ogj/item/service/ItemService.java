@@ -21,26 +21,26 @@ public class ItemService {
 
     @Transactional
     public Long createItem(ItemParam itemParam){
-        //1123
+        //11232
         itemValidService.createItemValid(itemParam);
         return itemCoreService.createItem(itemParam);
     }
 
     @Transactional
     public Long updateItem(ItemParam itemParam){
-        //7123
+        //71232
         itemValidService.updateItemValid(itemParam);
         return itemCoreService.updateItem(itemParam);
     }
 
     public Page<ItemResponse> pageItem(ItemSearch itemSearch, Pageable pageable){
-        //7123
+        //71232
         itemValidService.pageItemValid(itemSearch);
         return itemCoreService.pageItem(itemSearch, pageable);
     }
 
     public ItemResponse detailItem(ItemSearch itemSearch){
-        //77778989123
+        //777789891232
         itemValidService.detailItemValid(itemSearch);
         return itemCoreService.detailItem(itemSearch);
     }

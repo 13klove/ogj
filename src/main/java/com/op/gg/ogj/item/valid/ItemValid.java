@@ -7,7 +7,7 @@ import com.op.gg.ogj.item.model.entity.Item;
 
 public enum ItemValid implements ObjectValid<Item>, ValueValid {
 
-    ITEM_ITEM_ID_LOCK("아이템의ID가 없습니다."){
+    ITEM_ITEM_ID_LOCK("아이템의ID가 없습니다."){////
         public void validLogic(Long value) {
             if(value==null) throw new ParamValidException("아이템의ID가 없습니다.");
         }
