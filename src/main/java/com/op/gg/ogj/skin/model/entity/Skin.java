@@ -1,15 +1,17 @@
-package com.op.gg.ogj.skin.model;
+package com.op.gg.ogj.skin.model.entity;
 
 import com.op.gg.ogj.config.baseDate.BaseDate;
 import com.op.gg.ogj.character.model.entity.Character;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
+@DynamicUpdate
 @Table(name = "skin")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Skin extends BaseDate {
@@ -34,6 +36,11 @@ public class Skin extends BaseDate {
 
     public static Skin createSkin(String skinNm, Long price){
         return new Skin(skinNm, price).skinCreateDefault();
+    }
+
+    public void updateSkin(String skinNm, Long price){
+        this.skinNm = skinNm;
+        this.price = price;
     }
 
     public Skin skinCreateDefault(){

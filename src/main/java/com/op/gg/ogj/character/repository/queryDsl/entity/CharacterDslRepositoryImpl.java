@@ -1,7 +1,7 @@
 package com.op.gg.ogj.character.repository.queryDsl.entity;
 
 import com.op.gg.ogj.character.model.entity.Character;
-import com.op.gg.ogj.item.model.Item;
+import com.op.gg.ogj.item.model.entity.Item;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
