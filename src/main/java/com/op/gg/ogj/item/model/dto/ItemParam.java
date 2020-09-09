@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @ApiModel
@@ -20,6 +22,9 @@ public class ItemParam {
 
     @ApiModelProperty(value = "itemId")
     private Long itemId;
+
+    @ApiModelProperty(value = "itemIds")
+    private List<Long> itemIds;
 
     @ApiModelProperty(value = "itemNm")
     private String itemNm;

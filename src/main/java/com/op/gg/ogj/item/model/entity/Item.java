@@ -55,7 +55,7 @@ public class Item extends BaseDate {
         character.itemAdd(this);
     }
 
-    public void itemSpecChange(ItemSpec itemSpec){
+    public void changeIemSpec(ItemSpec itemSpec){
         this.itemSpec = itemSpec;
     }
 

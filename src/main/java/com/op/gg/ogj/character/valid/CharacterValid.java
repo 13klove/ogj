@@ -1,10 +1,12 @@
 package com.op.gg.ogj.character.valid;
 
 import com.op.gg.ogj.character.model.CharacterType;
+import com.op.gg.ogj.character.model.entity.Character;
 import com.op.gg.ogj.config.exception.domain.ParamValidException;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public enum CharacterValid {
@@ -45,8 +47,8 @@ public enum CharacterValid {
         }
     },
     CHARACTER_NO_HAVE("케릭터가 존재하지 않습니다."){
-        public void validLogic(Object value){
-            if(value==null) throw new ParamValidException("케릭터가 존재하지 않습니다.");
+        public void validLogic(Optional<Character> value){
+            value.orElseThrow(()->new ParamValidException("케릭터가 존재하지 않습니다."));
         }
     };
 
@@ -62,6 +64,8 @@ public enum CharacterValid {
 
 
     public void validLogic(Object param) { }
+
+    public void validLogic(Optional<Character> value) { }
 
     public void validLogic(Long value) { }
 
