@@ -24,15 +24,14 @@ public class ItemValidService {
     private final CharacterJpaRepository characterJpaRepository;
 
     public void createItemValid(ItemParam itemParam) {
-        createUpdateValid(itemParam);
         Item item = itemJpaRepository.findItemByCharacter_CharacterIdAndItemNmAndActYnTrue(itemParam.getCharacterId(), itemParam.getItemNm());
-        ItemValid.ITEM_ITEM_NM_EXIT.validLogic(item);
+        createUpdateValid(itemParam, item);
     }
 
     public void updateItemValid(ItemParam itemParam) {
-        createUpdateValid(itemParam);
+        ItemValid.ITEM_ITEM_ID_LOCK.validLogic(itemParam.getItemId());
         Item item = itemJpaRepository.findItemByCharacter_CharacterIdAndItemIdAndItemNmAndActYnTrue(itemParam.getCharacterId(), itemParam.getItemId(), itemParam.getItemNm());
-        ItemValid.ITEM_ITEM_NM_EXIT.validLogic(item);
+        createUpdateValid(itemParam, item);
     }
 
     public void pageItemValid(ItemSearch itemSearch) {
@@ -52,7 +51,7 @@ public class ItemValidService {
         ItemValid.ITEM_ITEM_IDS_LOCK.validLogic(itemParam.getItemIds());
     }
 
-    private void createUpdateValid(ItemParam itemParam) {
+    private void createUpdateValid(ItemParam itemParam, Item item) {
         CharacterValid.CHARACTER_ID_LOCK.validLogic(itemParam.getCharacterId());
 
         Optional<Character> character = characterJpaRepository.findById(itemParam.getCharacterId());
@@ -61,6 +60,7 @@ public class ItemValidService {
         ItemValid.ITEM_ITEM_NM_LOCK.validLogic(itemParam.getItemNm());
         ItemValid.ITEM_ITEM_TYPE_LOCK.validLogic(itemParam.getItemType());
         ItemValid.ITEM_PRICE_LOCK.validLogic(itemParam.getPrice());
+        ItemValid.ITEM_ITEM_NM_EXIT.validLogic(item);
 
         ItemSpecValid.ITEM_SPEC_IS_INFO_LOCK.validLogic(itemParam.getIsInfo());
         ItemSpecValid.ITEM_SPEC_DAMAGE_RATE_LOCK.validLogic(itemParam.getDamageRate());

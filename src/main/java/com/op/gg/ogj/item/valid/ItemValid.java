@@ -15,14 +15,10 @@ public enum ItemValid {
         }
     },
     ITEM_ITEM_IDS_LOCK("아이템의IDs가 없습니다."){
-        public void validLogic(List<Long> value) {
-            if(value==null||value.isEmpty()) throw new ParamValidException("아이템의ID가 없습니다.");
-        }
+        public void validLogic(List<Long> value) { if(value==null||value.isEmpty()) throw new ParamValidException("아이템의ID가 없습니다."); }
     },
     ITEM_ITEM_NM_LOCK("아이템의 이름이 없습니다."){
-        public void validLogic(String value){
-            if(!StringUtils.hasText(value)) throw new ParamValidException("아이템의 이름이 없습니다.");
-        }
+        public void validLogic(String value){ if(!StringUtils.hasText(value)) throw new ParamValidException("아이템의 이름이 없습니다."); }
     },
     ITEM_ITEM_TYPE_LOCK("아이템 타입이 없습니다."){
         public void validLogic(ItemType value){

@@ -12,29 +12,19 @@ import java.util.Optional;
 public enum CharacterValid {
 
     CHARACTER_ID_LOCK("케릭터ID가 없습니다."){
-        public void validLogic(Long value) {
-            if(value==null) throw new ParamValidException("케릭터ID가 없습니다.");
-        }
+        public void validLogic(Long value) { if(value==null) throw new ParamValidException("케릭터ID가 없습니다."); }
     },
     CHARACTER_IDS_LOCK("케릭터ID가 없습니다."){
-        public void validLogic(List<Long> values) {
-            if(values == null || values.isEmpty()) throw new ParamValidException("케릭터ID가 없습니다.");
-        }
+        public void validLogic(List<Long> values) { if(values == null || values.isEmpty()) throw new ParamValidException("케릭터ID가 없습니다."); }
     },
     CHARACTER_NAME_EXIST("이미 존재하는 케릭터 입니다."){
-        public void validLogic(Object value) {
-            if(value!=null) throw new ParamValidException("이미 존재하는 캐릭터 입니다.");
-        }
+        public void validLogic(Character value) { if(value!=null) throw new ParamValidException("이미 존재하는 캐릭터 입니다."); }
     },
     CHARACTER_NAME_LOCK("케릭터 이름은 필수 입니다."){
-        public void validLogic(String value){
-            if(!StringUtils.hasText(value)) throw new ParamValidException("케릭터 이름은 필수 입니다.");
-        }
+        public void validLogic(String value){ if(!StringUtils.hasText(value)) throw new ParamValidException("케릭터 이름은 필수 입니다."); }
     },
     CHARACTER_TYPE_LOCK("케릭터 타입은 필수 입니다."){
-        public void validLogic(CharacterType value){
-            if(value==null) throw new ParamValidException("케릭터 타입은 필수 입니다.");
-        }
+        public void validLogic(CharacterType value){ if(value==null) throw new ParamValidException("케릭터 타입은 필수 입니다."); }
     },
     CHARACTER_LIFE_LOCK("케릭터 생명력은 필수 입니다."){
         public void validLogic(Integer value){
@@ -47,9 +37,7 @@ public enum CharacterValid {
         }
     },
     CHARACTER_NO_HAVE("케릭터가 존재하지 않습니다."){
-        public void validLogic(Optional<Character> value){
-            value.orElseThrow(()->new ParamValidException("케릭터가 존재하지 않습니다."));
-        }
+        public void validLogic(Optional<Character> value){ value.orElseThrow(()->new ParamValidException("케릭터가 존재하지 않습니다.")); }
     };
 
     private String desc;
@@ -62,8 +50,7 @@ public enum CharacterValid {
         return desc;
     }
 
-
-    public void validLogic(Object param) { }
+    public void validLogic(Character value) { }
 
     public void validLogic(Optional<Character> value) { }
 

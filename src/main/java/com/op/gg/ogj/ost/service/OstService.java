@@ -48,6 +48,10 @@ public class OstService {
         ostCoreService.delOst(ostParam);
     }
 
-
+    @Transactional
+    public void delOsts(OstParam ostParam){
+        ostValidService.delOsts(ostParam);
+        ostCoreService.delOst(ostParam);
+    }
 
 }
