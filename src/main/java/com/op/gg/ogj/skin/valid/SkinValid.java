@@ -1,11 +1,10 @@
 package com.op.gg.ogj.skin.valid;
 
 import com.op.gg.ogj.config.exception.domain.ParamValidException;
-import com.op.gg.ogj.config.valid.ObjectValid;
 import com.op.gg.ogj.skin.model.dto.SkinParam;
 import org.springframework.util.StringUtils;
 
-public enum SkinValid implements ObjectValid<SkinParam> {
+public enum SkinValid {
 
     SKIN_SKIN_ID_LOCK("스킨ID가 없습니다."){
         public void validLogic(SkinParam param) {
@@ -40,5 +39,7 @@ public enum SkinValid implements ObjectValid<SkinParam> {
     public String getDesc() {
         return desc;
     }
+
+    public void validLogic(SkinParam param){}
 
 }

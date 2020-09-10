@@ -8,7 +8,7 @@ import com.op.gg.ogj.item.model.dto.ItemSearch;
 import com.op.gg.ogj.item.model.entity.Item;
 import com.op.gg.ogj.item.repository.ItemJpaRepository;
 import com.op.gg.ogj.item.valid.ItemValid;
-import com.op.gg.ogj.itemSpec.valid.ItemSpec;
+import com.op.gg.ogj.itemSpec.valid.ItemSpecValid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,9 +62,9 @@ public class ItemValidService {
         ItemValid.ITEM_ITEM_TYPE_LOCK.validLogic(itemParam.getItemType());
         ItemValid.ITEM_PRICE_LOCK.validLogic(itemParam.getPrice());
 
-        ItemSpec.ITEM_SPEC_IS_INFO_LOCK.validLogic(itemParam.getIsInfo());
-        ItemSpec.ITEM_SPEC_DAMAGE_RATE_LOCK.validLogic(itemParam.getDamageRate());
-        ItemSpec.ITEM_SPEC_DEFENSE_RATE_LOCK.validLogic(itemParam.getDefenseRate());
+        ItemSpecValid.ITEM_SPEC_IS_INFO_LOCK.validLogic(itemParam.getIsInfo());
+        ItemSpecValid.ITEM_SPEC_DAMAGE_RATE_LOCK.validLogic(itemParam.getDamageRate());
+        ItemSpecValid.ITEM_SPEC_DEFENSE_RATE_LOCK.validLogic(itemParam.getDefenseRate());
     }
 
 }

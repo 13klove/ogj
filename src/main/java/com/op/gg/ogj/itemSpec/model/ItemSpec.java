@@ -35,6 +35,12 @@ public class ItemSpec extends BaseDate {
         return new ItemSpec(isInfo, damageRate, defenseRate).itemSpecCreateDefault();
     }
 
+    public void updateItem(String isInfo, Integer damageRate, Integer defenseRate){
+        this.isInfo = isInfo;
+        this.damageRate = damageRate;
+        this.defenseRate = defenseRate;
+    }
+
     public ItemSpec itemSpecCreateDefault(){
         this.actYn = true;
         return this;

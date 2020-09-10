@@ -13,7 +13,7 @@
 //@Entity
 //@Table(name = "item_spec")
 //@NoArgsConstructor(access = AccessLevel.PROTECTED)
-//public class ItemSpec extends BaseDate implements Persistable<Long> {
+//public class ItemSpecValid extends BaseDate implements Persistable<Long> {
 //
 //    @Id
 //    private Long itemId;
@@ -31,17 +31,17 @@
 //    @JoinColumn(name = "item_id")
 //    private Item item;
 //
-//    protected ItemSpec(String isInfo, Integer damageRate, Integer defenseRate){
+//    protected ItemSpecValid(String isInfo, Integer damageRate, Integer defenseRate){
 //        this.isInfo = isInfo;
 //        this.damageRate = damageRate;
 //        this.defenseRate = defenseRate;
 //    }
 //
-//    public static ItemSpec createItemSpec(String isInfo, Integer damageRate, Integer defenseRate){
-//        return new ItemSpec(isInfo, damageRate, defenseRate).itemSpecCreateDefault();
+//    public static ItemSpecValid createItemSpec(String isInfo, Integer damageRate, Integer defenseRate){
+//        return new ItemSpecValid(isInfo, damageRate, defenseRate).itemSpecCreateDefault();
 //    }
 //
-//    public ItemSpec itemSpecCreateDefault(){
+//    public ItemSpecValid itemSpecCreateDefault(){
 //        this.actYn = true;
 //        return this;
 //    }

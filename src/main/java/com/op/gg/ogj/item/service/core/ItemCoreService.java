@@ -14,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -39,20 +41,30 @@ public class ItemCoreService {
 
     @Transactional
     public Long updateItem(ItemParam itemParam) {
-        return null;
+        Item item = itemJpaRepository.findItemByItemIdAcUpdate(itemParam.getItemId());
+        item.updateItem(itemParam.getItemNm(), itemParam.getItemType(), itemParam.getPrice());
+        item.getItemSpec().updateItem(itemParam.getIsInfo(), itemParam.getDamageRate(), itemParam.getDefenseRate());
+        return item.getItemId();
     }
 
     public Page<ItemResponse> pageItem(ItemSearch itemSearch, Pageable pageable) {
-        return null;
+        return itemJpaRepository.pageItem(itemSearch.getCharacterId(), itemSearch.getItemNm(), itemSearch.getItemType(), pageable);
     }
 
     public ItemResponse detailItem(ItemSearch itemSearch) {
-        return null;
+        return itemJpaRepository.detailItem(itemSearch.getCharacterId(), itemSearch.getItemId());
     }
 
+    @Transactional
     public void delItem(ItemParam itemParam) {
+        Item item = itemJpaRepository.findDelItemByItemId(itemParam.getItemId());
+        item.delItem();
+        item.getItemSpec().delItemSpec();
     }
 
+    @Transactional
     public void delItems(ItemParam itemParam) {
+        List<Item> items = itemJpaRepository.findDelItemsByItemIds(itemParam.getItemIds());
+        items.forEach(a->{a.delItem(); a.getItemSpec().delItemSpec();});
     }
 }

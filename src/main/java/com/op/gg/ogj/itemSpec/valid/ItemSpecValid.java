@@ -3,7 +3,7 @@ package com.op.gg.ogj.itemSpec.valid;
 import com.op.gg.ogj.config.exception.domain.ParamValidException;
 import org.springframework.util.StringUtils;
 
-public enum ItemSpec {
+public enum ItemSpecValid {
 
     ITEM_SPEC_IS_INFO_LOCK("아이템 설명이 없습니다."){
         public void validLogic(String value) {
@@ -23,7 +23,7 @@ public enum ItemSpec {
 
     private String desc;
 
-    ItemSpec(String desc){
+    ItemSpecValid(String desc){
         this.desc = desc;
     }
 

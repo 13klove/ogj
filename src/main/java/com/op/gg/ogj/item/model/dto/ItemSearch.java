@@ -1,5 +1,6 @@
 package com.op.gg.ogj.item.model.dto;
 
+import com.op.gg.ogj.item.model.ItemType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -19,5 +20,11 @@ public class ItemSearch {
 
     @ApiModelProperty(value = "itemId")
     private Long itemId;
+
+    @ApiModelProperty(value = "itemNm")
+    private String itemNm;
+
+    @ApiModelProperty(value = "itemType")
+    private ItemType itemType;
 
 }
