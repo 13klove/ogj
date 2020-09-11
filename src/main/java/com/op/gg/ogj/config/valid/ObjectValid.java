@@ -1,7 +1,7 @@
 package com.op.gg.ogj.config.valid;
 
-public interface ObjectValid<T> {
+public interface ObjectValid {
 
-    void validLogic(T param);
+    void validLogic(Object param);
 
 }

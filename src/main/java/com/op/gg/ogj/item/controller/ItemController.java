@@ -39,7 +39,8 @@ public class ItemController {
 
     @GetMapping("{id}")
     @ApiOperation(notes = "아이템 상세", value = "아이템 상세")
-    public ResponseDto detailItem(ItemSearch itemSearch){
+    public ResponseDto detailItem(@PathVariable("id") Long itemId, ItemSearch itemSearch){
+        itemSearch.setItemId(itemId);
         return ResponseDto.of(itemService.detailItem(itemSearch));
     }
 
@@ -52,7 +53,7 @@ public class ItemController {
 
     @PostMapping("dels")
     @ApiOperation(notes = "아이템 복수 삭제", value = "아이템 복수 삭제")
-    public void delItems(ItemParam itemParam){
+    public void delItems(@RequestBody ItemParam itemParam){
         itemService.delItems(itemParam);
     }
 

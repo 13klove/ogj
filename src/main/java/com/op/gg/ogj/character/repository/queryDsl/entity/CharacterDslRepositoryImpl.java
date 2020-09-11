@@ -10,7 +10,7 @@ import java.util.List;
 
 import static com.op.gg.ogj.character.model.entity.QCharacter.character;
 import static com.op.gg.ogj.game.model.entity.QGame.game;
-import static com.op.gg.ogj.item.model.QItem.item;
+import static com.op.gg.ogj.item.model.entity.QItem.item;
 import static com.op.gg.ogj.itemSpec.model.QItemSpec.itemSpec;
 import static com.op.gg.ogj.skill.model.entity.QSkill.skill;
 
