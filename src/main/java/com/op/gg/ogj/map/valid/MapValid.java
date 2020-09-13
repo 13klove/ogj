@@ -10,6 +10,9 @@ public enum MapValid {
     MAP_MAP_ID_LOCK("맵 ID가 없습니다."){
         public void validLogic(Long value){ if(value==null) throw new ParamValidException("맵 ID가 없습니다."); }
     },
+    MAP_MAPS_ID_LOCK("맵 ID가 없습니다."){
+        public void validLogic(List<Long> value){ if(value==null) throw new ParamValidException("맵 ID가 없습니다."); }
+    },
     MAP_MAP_NM_LOCK("맵 이름이 없습니다."){
         public void validLogic(String value){ if(value==null) throw new ParamValidException("맵 이름이 없습니다."); }
     },
@@ -29,8 +32,6 @@ public enum MapValid {
     public void validLogic(Long value) { }
 
     public void validLogic(List<Long> value) { }
-
-    public void validLogic(Integer value) { }
 
     public void validLogic(String value) { }
 

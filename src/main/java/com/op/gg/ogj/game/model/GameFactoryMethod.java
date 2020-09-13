@@ -31,9 +31,9 @@ public enum GameFactoryMethod {
     }
     ;
 
-    public Game create(GameParam gameParam){
-        return createGame(gameParam);
-    }
+//    public Game create(GameParam gameParam){
+//        return createGame(gameParam);
+//    }
 
     abstract protected Game createGame(GameParam gameParam);
 

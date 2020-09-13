@@ -53,7 +53,7 @@ public class MapController {
     @PostMapping("del")
     @ApiOperation(value = "다중 맵 삭제", notes = "다중 맵 삭제")
     public void delMaps(@RequestBody MapParam mapParam){
-        mapService.delMap(mapParam);
+        mapService.delMaps(mapParam);
     }
 
 }

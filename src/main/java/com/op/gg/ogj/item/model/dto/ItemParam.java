@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ItemParam {
 
-    @ApiModelProperty(value = "characterId")
+    @ApiModelProperty(value = "characterId", required = true)
     private Long characterId;
 
     @ApiModelProperty(value = "itemId")
@@ -26,22 +26,22 @@ public class ItemParam {
     @ApiModelProperty(value = "itemIds")
     private List<Long> itemIds;
 
-    @ApiModelProperty(value = "itemNm")
+    @ApiModelProperty(value = "itemNm", required = true)
     private String itemNm;
 
-    @ApiModelProperty(value = "itemType")
+    @ApiModelProperty(value = "itemType", required = true)
     private ItemType itemType;
 
-    @ApiModelProperty(value = "price")
+    @ApiModelProperty(value = "price", required = true)
     private Integer price;
 
-    @ApiModelProperty(value = "isInfo")
+    @ApiModelProperty(value = "isInfo", required = true)
     private String isInfo;
 
-    @ApiModelProperty(value = "damageRate")
+    @ApiModelProperty(value = "damageRate", required = true)
     private Integer damageRate;
 
-    @ApiModelProperty(value = "defenseRate")
+    @ApiModelProperty(value = "defenseRate", required = true)
     private Integer defenseRate;
 
 }

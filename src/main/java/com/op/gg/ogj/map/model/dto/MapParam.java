@@ -22,7 +22,7 @@ public class MapParam {
     @ApiModelProperty(value = "맵id")
     private Long mapId;
 
-    @ApiModelProperty(value = "맵이름")
+    @ApiModelProperty(value = "맵이름", required = true)
     private String mapNm;
 
     @ApiModelProperty(value = "맵id 묶음")

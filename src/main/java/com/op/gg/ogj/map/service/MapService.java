@@ -37,7 +37,14 @@ public class MapService {
         mapCoreService.delMap(mapParam);
     }
 
+    @Transactional
+    public void delMaps(MapParam mapParam){
+        mapValidService.delMapsValid(mapParam);
+        mapValidService.delMapsValid(mapParam);
+    }
+
     public Page<MapResponse> pageMap(MapSearch mapSearch, Pageable pageable){
+        mapValidService.pageMapValid(mapSearch);
         return mapCoreService.pageMap(mapSearch, pageable);
     }
 

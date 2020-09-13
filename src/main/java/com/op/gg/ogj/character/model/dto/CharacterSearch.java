@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CharacterSearch {
 
-    @ApiModelProperty(value = "gameId", notes = "gameId")
+    @ApiModelProperty(value = "gameId", notes = "gameId", required = true)
     private Long gameId;
 
     @ApiModelProperty(value = "characterId", notes = "characterId")
