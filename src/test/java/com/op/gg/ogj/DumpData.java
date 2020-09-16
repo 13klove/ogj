@@ -1,8 +1,9 @@
 package com.op.gg.ogj;
 
 import com.google.common.collect.Lists;
+import com.op.gg.ogj.alagacy.model.GameFactoryMethod;
 import com.op.gg.ogj.game.model.DeviceType;
-import com.op.gg.ogj.game.model.GameFactoryMethod;
+import com.op.gg.ogj.game.model.GameType;
 import com.op.gg.ogj.game.model.dto.GameParam;
 import com.op.gg.ogj.game.service.GameService;
 import com.op.gg.ogj.map.model.dto.MapParam;
@@ -68,7 +69,7 @@ public class DumpData {
                 .price(3300)
                 .brand("븦리자드")
                 .deviceType(DeviceType.PC)
-                .gameType(GameFactoryMethod.FPS)
+                .gameType(GameType.FPS)
                 .storyYn(true)
                 .gameInfo1("팀전 fps")
                 .build();
@@ -78,7 +79,7 @@ public class DumpData {
                 .price(1200)
                 .brand("븦리자드")
                 .deviceType(DeviceType.PC)
-                .gameType(GameFactoryMethod.RTS)
+                .gameType(GameType.RTS)
                 .licenseYn(true)
                 .gameInfo1("고전 게임")
                 .gameInfo2("아프리카tv 대회")
@@ -89,7 +90,7 @@ public class DumpData {
                 .price(0)
                 .brand("넥슨")
                 .deviceType(DeviceType.PC)
-                .gameType(GameFactoryMethod.FPS)
+                .gameType(GameType.FPS)
                 .storyYn(false)
                 .gameInfo1("넥슨 fps")
                 .build();
@@ -99,7 +100,7 @@ public class DumpData {
                 .price(0)
                 .brand("라이엇")
                 .deviceType(DeviceType.PC)
-                .gameType(GameFactoryMethod.AOS)
+                .gameType(GameType.AOS)
                 .usemapYn(true)
                 .gameInfo1("멀티 플레이 온라인 아레나")
                 .build();
@@ -109,7 +110,7 @@ public class DumpData {
                 .price(12000)
                 .brand("블리자드")
                 .deviceType(DeviceType.PC)
-                .gameType(GameFactoryMethod.RPG)
+                .gameType(GameType.RPG)
                 .autoPlayYn(false)
                 .gameInfo1("악마를 사냥한다. 디아블로")
                 .build();
@@ -119,7 +120,7 @@ public class DumpData {
                 .price(0)
                 .brand("넥슨")
                 .deviceType(DeviceType.MOBILE)
-                .gameType(GameFactoryMethod.RPG)
+                .gameType(GameType.RPG)
                 .autoPlayYn(true)
                 .gameInfo1("pc의 향수를 느낄수 있다.")
                 .build();
@@ -129,7 +130,7 @@ public class DumpData {
                 .price(0)
                 .brand("넥슨")
                 .deviceType(DeviceType.MOBILE)
-                .gameType(GameFactoryMethod.RPG)
+                .gameType(GameType.RPG)
                 .autoPlayYn(true)
                 .gameInfo1("pc의 향수를 느낄수 있다.")
                 .build();

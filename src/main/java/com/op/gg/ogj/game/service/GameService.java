@@ -41,4 +41,8 @@ public class GameService {
         return gameCoreService.detailGame(gameSearch);
     }
 
+    public void delGame(GameParam gameParam) {
+        gameValidService.delGame(gameParam.getGameId());
+        gameCoreService.delGame(gameParam);
+    }
 }

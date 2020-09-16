@@ -1,9 +1,12 @@
 package com.op.gg.ogj.game.repository.queryDsl.entity;
 
 import com.op.gg.ogj.game.model.entity.Game;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import javax.persistence.EntityManager;
+
+import java.util.List;
 
 import static com.op.gg.ogj.game.model.entity.QGame.game;
 import static com.op.gg.ogj.gameInfo.model.entity.QGameInfo.gameInfo;
@@ -32,6 +35,18 @@ public class GameDslRepositoryImpl implements GameDslRepository {
                 .join(game.gameInfo, gameInfo).fetchJoin()
                 .where(game.gameId.eq(id))
                 .fetchOne();
+    }
+
+    @Override
+    public void updateGameRelActYn(List<Long> gameIds) {
+        jpaQueryFactory.update(game)
+                .set(game.actYn, false)
+                .where(whereInGameIds(gameIds))
+                .execute();
+    }
+
+    public BooleanExpression whereInGameIds(List<Long> gameIds){
+        return gameIds==null||gameIds.isEmpty()?null:game.gameId.in(gameIds);
     }
 
 }

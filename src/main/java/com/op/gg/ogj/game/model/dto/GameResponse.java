@@ -1,7 +1,7 @@
 package com.op.gg.ogj.game.model.dto;
 
 import com.op.gg.ogj.game.model.DeviceType;
-import com.op.gg.ogj.game.model.GameFactoryMethod;
+import com.op.gg.ogj.game.model.GameType;
 import com.op.gg.ogj.gameInfo.model.dto.GameInfoResponse;
 import com.op.gg.ogj.map.model.dto.MapResponse;
 import com.op.gg.ogj.ost.model.dto.OstResponse;
@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class GameResponse {
 
     private Long gameId;
@@ -29,7 +29,7 @@ public class GameResponse {
 
     private DeviceType deviceType;
 
-    private GameFactoryMethod gameType;
+    private GameType gameType;
 
     private GameInfoResponse gameInfo;
 
@@ -38,7 +38,7 @@ public class GameResponse {
     private List<MapResponse> maps;
 
     @QueryProjection
-    public GameResponse(Long gameId, String gameNm, Integer price, String brand, DeviceType deviceType, GameFactoryMethod gameType, String gameInfo1, String gameInfo2) {
+    public GameResponse(Long gameId, String gameNm, Integer price, String brand, DeviceType deviceType, GameType gameType, String gameInfo1, String gameInfo2) {
         this.gameId = gameId;
         this.gameNm = gameNm;
         this.price = price;

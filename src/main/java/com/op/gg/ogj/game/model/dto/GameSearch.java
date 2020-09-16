@@ -1,7 +1,7 @@
 package com.op.gg.ogj.game.model.dto;
 
 import com.op.gg.ogj.game.model.DeviceType;
-import com.op.gg.ogj.game.model.GameFactoryMethod;
+import com.op.gg.ogj.game.model.GameType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -13,10 +13,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @ApiModel
+@NoArgsConstructor
+@AllArgsConstructor
 public class GameSearch {
 
     @ApiModelProperty(value = "게임 id")
@@ -46,6 +46,6 @@ public class GameSearch {
     private DeviceType deviceType;
 
     @ApiModelProperty(value = "게임 타입")
-    private GameFactoryMethod gameType;
+    private GameType gameType;
 
 }

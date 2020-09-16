@@ -1,9 +1,10 @@
 package com.op.gg.ogj.game.model.entity;
 
 import com.google.common.collect.Lists;
+
 import com.op.gg.ogj.config.baseDate.BaseDate;
 import com.op.gg.ogj.game.model.DeviceType;
-import com.op.gg.ogj.game.model.GameFactoryMethod;
+import com.op.gg.ogj.game.model.GameType;
 import com.op.gg.ogj.gameInfo.model.entity.GameInfo;
 import com.op.gg.ogj.map.model.entity.Map;
 import com.op.gg.ogj.character.model.entity.Character;
@@ -18,9 +19,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "game")
-@DiscriminatorColumn(name = "game_type")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Game extends BaseDate {
 
     @Id
@@ -37,8 +36,15 @@ public class Game extends BaseDate {
     private DeviceType deviceType;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "game_type", insertable = false, updatable = false)
-    private GameFactoryMethod gameType;
+    private GameType gameType;
+
+    private Boolean usemapYn;//aos
+
+    private Boolean storyYn;//fps
+
+    private Boolean autoPlayYn;//rpg
+
+    private Boolean licenseYn;//rts
 
     private Boolean actYn;
 
@@ -55,23 +61,33 @@ public class Game extends BaseDate {
     @OneToMany(mappedBy = "game", cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     private List<Map> maps = Lists.newArrayList();
 
-    protected Game(String gameNm, Integer price, String brand, DeviceType deviceType) {
+    protected Game(String gameNm, Integer price, String brand, DeviceType deviceType, GameType gameType, Boolean usemapYn, Boolean storyYn, Boolean autoPlayYn, Boolean licenseYn) {
         this.gameNm = gameNm;
         this.price = price;
         this.brand = brand;
         this.deviceType = deviceType;
+        this.gameType = gameType;
+        this.usemapYn = usemapYn;
+        this.storyYn = storyYn;
+        this.autoPlayYn = autoPlayYn;
+        this.licenseYn = licenseYn;
         this.actYn = true;
     }
 
-    public static Game createGame(String gameNm, Integer price, String brand, DeviceType deviceType, Boolean actYn) {
-        return new Game(gameNm, price, brand, deviceType).gameCreateDefault();
+    public static Game createGame(String gameNm, Integer price, String brand, DeviceType deviceType, GameType gameType, Boolean usemapYn, Boolean storyYn, Boolean autoPlayYn, Boolean licenseYn) {
+        return new Game(gameNm, price, brand, deviceType, gameType, usemapYn, storyYn, autoPlayYn, licenseYn).gameCreateDefault();
     }
 
-    public void gameUpdate(String gameNm, Integer price, String brand, DeviceType deviceType){
+    public void updateGame(String gameNm, Integer price, String brand, DeviceType deviceType, GameType gameType, Boolean usemapYn, Boolean storyYn, Boolean autoPlayYn, Boolean licenseYn) {
         this.gameNm = gameNm;
         this.price = price;
         this.brand = brand;
         this.deviceType = deviceType;
+        this.gameType = gameType;
+        this.usemapYn = usemapYn;
+        this.storyYn = storyYn;
+        this.autoPlayYn = autoPlayYn;
+        this.licenseYn = licenseYn;
     }
 
     public Game gameCreateDefault(){

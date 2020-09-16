@@ -12,4 +12,8 @@ public interface CharacterDslRepository {
 
     List<Character> findCharacterRelInfoByGameIdCharactersId(Long gameId, List<Long> charactersId);
 
+    void updateCharacterActYn(List<Long> gameIds);
+
+    List<Long> findCharacterIdsByGameIds(List<Long> gameIds);
+
 }
