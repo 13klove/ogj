@@ -30,7 +30,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class GameCoreService {
-
+    //커밋을 해야 넘어가는 구만
     private final static int PARTITION_SIZE = 1000;
 
     private final GameJpaRepository gameJpaRepository;
@@ -43,7 +43,7 @@ public class GameCoreService {
     private final SkillJpaRepository skillJpaRepository;
     private final ItemSpecJpaRepository itemSpecJpaRepository;
 
-    @Transactional
+    @Transactional//dev 여기를 수정하면?
     public Long createGame(GameParam gameParam){
         Game game = Game.createGame(gameParam.getGameNm(), gameParam.getPrice(), gameParam.getBrand(), gameParam.getDeviceType(), gameParam.getGameType(), gameParam.getUsemapYn(), gameParam.getStoryYn(), gameParam.getAutoPlayYn(), gameParam.getLicenseYn());
         GameInfo gameInfo = GameInfo.createGameInfo(gameParam.getGameInfo1(), gameParam.getGameInfo2());
@@ -106,6 +106,7 @@ public class GameCoreService {
             List<Long> itemSpecIds = itemJpaRepository.findItemSpecIdsByCharacterIds(a);
             itemSpecJpaRepository.updateItemSpecByItemSpecIds(itemSpecIds);
         });
+        //여기에 수정하고 commit안하고 넘어가기 여기는 dev
     }
 
 
