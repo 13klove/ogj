@@ -47,7 +47,11 @@ public class GameValidService {
         GameValid.GAME_NO_HAVE.validLogic(game);
     }
 
-    public void delGames(List<Long> gamesId){ GameValid.GAME_IDS_LOCK.validLogic(gamesId); }
+    public void delGames(List<Long> gamesId){
+        GameValid.GAME_IDS_LOCK.validLogic(gamesId);
+        List<Game> games = gameJpaRepository.findAllById(gamesId);
+        GameValid.GAME_GAMES_NO_HAVE.validLogic(games);
+    }
 
     private void createUpdate(GameParam gameParam) {
         GameInfoValid.GAME_INFO_GAME_INFO1_LOCK.validLogic(gameParam.getGameInfo1());

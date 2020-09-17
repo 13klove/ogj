@@ -12,4 +12,6 @@ public interface GameDslRepository {
 
     void updateGameRelActYn(List<Long> gameIds);
 
+    List<Long> findGameInfoIdsByGameIds(List<Long> gameIds);
+
 }

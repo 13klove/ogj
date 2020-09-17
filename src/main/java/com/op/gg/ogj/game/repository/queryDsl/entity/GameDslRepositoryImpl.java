@@ -7,6 +7,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import javax.persistence.EntityManager;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.op.gg.ogj.game.model.entity.QGame.game;
 import static com.op.gg.ogj.gameInfo.model.entity.QGameInfo.gameInfo;
@@ -43,6 +44,17 @@ public class GameDslRepositoryImpl implements GameDslRepository {
                 .set(game.actYn, false)
                 .where(whereInGameIds(gameIds))
                 .execute();
+    }
+
+    @Override
+    public List<Long> findGameInfoIdsByGameIds(List<Long> gameIds) {
+        return jpaQueryFactory.selectFrom(game)
+                .join(game.gameInfo, gameInfo).fetchJoin()
+                .where(whereInGameIds(gameIds))
+                .fetch()
+                .stream()
+                .map(a->a.getGameInfo().getGameInfoId())
+                .collect(Collectors.toList());
     }
 
     public BooleanExpression whereInGameIds(List<Long> gameIds){

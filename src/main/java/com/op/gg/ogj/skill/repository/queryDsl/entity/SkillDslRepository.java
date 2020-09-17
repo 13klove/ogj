@@ -10,4 +10,6 @@ public interface SkillDslRepository {
 
     List<Skill> findSkillsBySkillsId(List<Long> skillsId);
 
+    void updateSkillActYn(List<Long> characterIds);
+
 }

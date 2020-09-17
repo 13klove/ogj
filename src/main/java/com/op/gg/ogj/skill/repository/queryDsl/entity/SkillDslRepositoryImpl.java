@@ -38,9 +38,17 @@ public class SkillDslRepositoryImpl implements SkillDslRepository{
                 .fetch();
     }
 
-    private Predicate whereSkillsId(List<Long> skillsId) {
-        return skillsId==null||skillsId.isEmpty()?null:skill.skillId.in(skillsId);
+    @Override
+    public void updateSkillActYn(List<Long> characterIds) {
+        jpaQueryFactory.update(skill)
+                .set(skill.actYn, false)
+                .where(whereInCharacterIds(characterIds))
+                .execute();
     }
+
+    private BooleanExpression whereInCharacterIds(List<Long> characterIds) { return characterIds==null||characterIds.isEmpty()?null:skill.character.characterId.in(characterIds); }
+
+    private Predicate whereSkillsId(List<Long> skillsId) { return skillsId==null||skillsId.isEmpty()?null:skill.skillId.in(skillsId); }
 
     public BooleanExpression whereSkillId(Long skillId){
         return skillId==null?null:skill.skillId.eq(skillId);

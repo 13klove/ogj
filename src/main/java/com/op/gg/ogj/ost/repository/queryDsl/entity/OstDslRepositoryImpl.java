@@ -7,6 +7,8 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import javax.persistence.EntityManager;
 
+import java.util.List;
+
 import static com.op.gg.ogj.game.model.entity.QGame.game;
 import static com.op.gg.ogj.map.model.entity.QMap.map;
 import static com.op.gg.ogj.ost.model.entity.QOst.ost;
@@ -34,6 +36,16 @@ public class OstDslRepositoryImpl implements OstDslRepository{
                 .where(whereOstId(ostParam.getOstId()))
                 .fetchOne();
     }
+
+    @Override
+    public void updateOstActYn(List<Long> gameIds) {
+        jpaQueryFactory.update(ost)
+                .set(ost.actYn, false)
+                .where(whereInGameIds(gameIds))
+                .execute();
+    }
+
+    public BooleanExpression whereInGameIds(List<Long> gameIds) { return gameIds==null||gameIds.isEmpty()?null:ost.game.gameId.in(gameIds); }
 
     public BooleanExpression whereOstId(Long ostId){
         return ostId == null?null:ost.ostId.eq(ostId);

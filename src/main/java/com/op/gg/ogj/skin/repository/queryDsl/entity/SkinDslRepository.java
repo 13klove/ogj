@@ -10,4 +10,6 @@ public interface SkinDslRepository {
 
     List<Skin> findSkinAndCharacterBySkinIds(List<Long> skinIds);
 
+    void updateSkinActYn(List<Long> characterIds);
+
 }

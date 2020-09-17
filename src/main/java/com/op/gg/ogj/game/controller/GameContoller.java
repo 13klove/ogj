@@ -54,4 +54,10 @@ public class GameContoller {
         gameService.delGame(GameParam.builder().gameId(gameId).gameIds(Arrays.asList(gameId)).build());
     }
 
+    @PutMapping("dels")
+    @ApiOperation(value = "게임 삭제", notes = "게임 삭제")
+    public void delGames(@RequestBody GameParam gameParam){
+        gameService.delGames(gameParam);
+    }
+
 }

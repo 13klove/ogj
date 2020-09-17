@@ -1,5 +1,6 @@
 package com.op.gg.ogj.game.service.core;
 
+import com.google.common.collect.Lists;
 import com.op.gg.ogj.character.model.entity.Character;
 import com.op.gg.ogj.character.repository.CharacterJpaRepository;
 import com.op.gg.ogj.game.model.dto.GameParam;
@@ -29,6 +30,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class GameCoreService {
+
+    private final static int PARTITION_SIZE = 1000;
 
     private final GameJpaRepository gameJpaRepository;
     private final GameInfoJpaRepository gameInfoJpaRepository;
@@ -72,11 +75,39 @@ public class GameCoreService {
         gameJpaRepository.updateGameRelActYn(gameParam.getGameIds());
         gameInfoJpaRepository.updateGameInfoActYn(gameIds);
         characterJpaRepository.updateCharacterActYn(gameIds);
+        mapJpaRepository.updateMapActYn(gameIds);
+        ostJpaRepository.updateOstActYn(gameIds);
         List<Long> characterIds = characterJpaRepository.findCharacterIdsByGameIds(gameIds);
         //characterIds가 null 이면 어떻게 되는거지?
         itemJpaRepository.updateItemActYn(characterIds);
         List<Long> itemSpecIds = itemJpaRepository.findItemSpecIdsByCharacterIds(characterIds);
         itemSpecJpaRepository.updateItemSpecByItemSpecIds(itemSpecIds);
-
+        skinJpaRepository.updateSkinActYn(characterIds);
+        skillJpaRepository.updateSkillActYn(characterIds);
     }
+
+    @Transactional
+    public void delGames(GameParam gameParam) {
+        List<List<Long>> gameIdsPartition = Lists.partition(gameParam.getGameIds(), PARTITION_SIZE);
+        gameIdsPartition.stream().forEach(a->{
+            List<Long> gameInfoIds = gameJpaRepository.findGameInfoIdsByGameIds(gameParam.getGameIds());
+            gameJpaRepository.updateGameRelActYn(a);
+            gameInfoJpaRepository.updateGameInfoActYn(gameInfoIds);
+            mapJpaRepository.updateMapActYn(a);
+            ostJpaRepository.updateOstActYn(a);
+        });
+
+        List<Long> characterIds = characterJpaRepository.findCharacterIdsByGameIds(gameParam.getGameIds());
+        List<List<Long>> characterIdsPartition = Lists.partition(characterIds, PARTITION_SIZE);
+        characterIdsPartition.stream().forEach(a->{
+            skinJpaRepository.updateSkinActYn(a);
+            skillJpaRepository.updateSkillActYn(a);
+            itemJpaRepository.updateItemActYn(a);
+            List<Long> itemSpecIds = itemJpaRepository.findItemSpecIdsByCharacterIds(a);
+            itemSpecJpaRepository.updateItemSpecByItemSpecIds(itemSpecIds);
+        });
+    }
+
+
+
 }
