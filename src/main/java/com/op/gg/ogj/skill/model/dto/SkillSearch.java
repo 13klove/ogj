@@ -18,7 +18,7 @@ public class SkillSearch {
     @ApiModelProperty(notes = "skillId")
     private Long skillId;
 
-    @ApiModelProperty(notes = "characterId")
+    @ApiModelProperty(notes = "characterId", required = true)
     private Long characterId;
 
     @ApiModelProperty(notes = "skillNm")

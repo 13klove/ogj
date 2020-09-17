@@ -20,7 +20,7 @@ public class OstSearch {
     @ApiModelProperty(value = "mapNm")
     private String mapNm;
 
-    @ApiModelProperty(value = "gameId")
+    @ApiModelProperty(value = "gameId", required = true)
     private Long gameId;
 
     @ApiModelProperty(value = "ostId")

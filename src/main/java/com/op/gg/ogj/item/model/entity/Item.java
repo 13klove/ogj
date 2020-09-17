@@ -31,7 +31,7 @@ public class Item extends BaseDate {
     @JoinColumn(name = "character_id")
     private Character character;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "item_spec_id")
     private ItemSpec itemSpec;
 
@@ -46,8 +46,14 @@ public class Item extends BaseDate {
     }
 
     public Item itemCreateDefault(){
-        this.actYn = actYn;
+        this.actYn = true;
         return this;
+    }
+
+    public void updateItem(String itemNm, ItemType itemType, Integer price){
+        this.itemNm = itemNm;
+        this.itemType = itemType;
+        this.price = price;
     }
 
     public void smCharacterChange(Character character){
@@ -55,7 +61,7 @@ public class Item extends BaseDate {
         character.itemAdd(this);
     }
 
-    public void itemSpecChange(ItemSpec itemSpec){
+    public void changeIemSpec(ItemSpec itemSpec){
         this.itemSpec = itemSpec;
     }
 

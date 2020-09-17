@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SkinParam {
 
-    @ApiModelProperty(notes = "characterId")
+    @ApiModelProperty(notes = "characterId", required = true)
     private Long characterId;
 
     @ApiModelProperty(notes = "skinId")
@@ -25,10 +25,10 @@ public class SkinParam {
     @ApiModelProperty(notes = "skinsId")
     private List<Long> skinsId;
 
-    @ApiModelProperty(notes = "skinNm")
+    @ApiModelProperty(notes = "skinNm", required = true)
     private String skinNm;
 
-    @ApiModelProperty(notes = "price")
+    @ApiModelProperty(notes = "price", required = true)
     private Long price;
 
 }

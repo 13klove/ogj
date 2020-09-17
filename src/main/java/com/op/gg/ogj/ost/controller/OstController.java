@@ -53,7 +53,7 @@ public class OstController {
     @PostMapping("del")
     @ApiOperation(value = "ost 다중 삭제", notes = "ost 다중 삭제")
     public void delOsts(@RequestBody OstParam ostParam){
-        ostService.delOst(ostParam);
+        ostService.delOsts(ostParam);
     }
 
 }

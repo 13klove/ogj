@@ -7,10 +7,11 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.op.gg.ogj.character.model.entity.QCharacter.character;
 import static com.op.gg.ogj.game.model.entity.QGame.game;
-import static com.op.gg.ogj.item.model.QItem.item;
+import static com.op.gg.ogj.item.model.entity.QItem.item;
 import static com.op.gg.ogj.itemSpec.model.QItemSpec.itemSpec;
 import static com.op.gg.ogj.skill.model.entity.QSkill.skill;
 
@@ -66,6 +67,24 @@ public class CharacterDslRepositoryImpl implements CharacterDslRepository{
         return results;
     }
 
+    @Override
+    public List<Long> findCharacterIdsByGameIds(List<Long> gameIds) {
+        return jpaQueryFactory.selectFrom(character)
+                .where(whereInGameIds(gameIds))
+                .fetch()
+                .stream()
+                .map(Character::getCharacterId)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void updateCharacterActYn(List<Long> gameIds) {
+        jpaQueryFactory.update(character)
+                .set(character.actYn, false)
+                .where(whereInGameIds(gameIds))
+                .execute();
+    }
+
     public BooleanExpression whereCharacterId(Long characterId){ return characterId==null?null:character.characterId.eq(characterId); }
 
     public BooleanExpression whereCharactersId(List<Long> charactersId) { return charactersId==null||charactersId.isEmpty()?null:character.characterId.in(charactersId); }
@@ -79,6 +98,8 @@ public class CharacterDslRepositoryImpl implements CharacterDslRepository{
     public BooleanExpression itemWhereActYn(Boolean actYn){
         return actYn==null?null:item.actYn.eq(actYn);
     }
+
+    public BooleanExpression whereInGameIds(List<Long> gameIds){ return gameIds==null||gameIds.isEmpty()?null:character.game.gameId.in(gameIds); }
 
 }
 

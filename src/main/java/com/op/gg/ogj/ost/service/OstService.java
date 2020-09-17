@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class OstService {
 
     private final OstCoreService ostCoreService;
@@ -30,13 +31,11 @@ public class OstService {
         return ostCoreService.updateOst(ostParam);
     }
 
-    @Transactional(readOnly = true)
     public Page<OstResponse> pageOst(OstSearch ostSearch, Pageable pageable){
         ostValidService.pageOstValid(ostSearch);
         return ostCoreService.pageOst(ostSearch, pageable);
     }
 
-    @Transactional(readOnly = true)
     public OstResponse detailOst(OstSearch ostSearch){
         ostValidService.detailOstValid(ostSearch);
         return ostCoreService.detailOst(ostSearch);
@@ -48,6 +47,10 @@ public class OstService {
         ostCoreService.delOst(ostParam);
     }
 
-
+    @Transactional
+    public void delOsts(OstParam ostParam){
+        ostValidService.delOsts(ostParam);
+        ostCoreService.delOst(ostParam);
+    }
 
 }
