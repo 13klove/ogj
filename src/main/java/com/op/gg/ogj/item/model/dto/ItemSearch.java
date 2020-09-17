@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ItemSearch {
 
-    @ApiModelProperty(value = "characterId")
+    @ApiModelProperty(value = "characterId", required = true)
     private Long characterId;
 
     @ApiModelProperty(value = "itemId")

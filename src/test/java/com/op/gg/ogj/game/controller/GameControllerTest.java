@@ -1,8 +1,9 @@
 package com.op.gg.ogj.game.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.op.gg.ogj.alagacy.model.GameFactoryMethod;
 import com.op.gg.ogj.game.model.DeviceType;
-import com.op.gg.ogj.game.model.GameFactoryMethod;
+import com.op.gg.ogj.game.model.GameType;
 import com.op.gg.ogj.game.model.dto.GameParam;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class GameControllerTest {
     @Transactional
     public void createGameTest() throws Exception{
         GameParam gameParam = GameParam.builder().gameNm("테스트게임23").gameInfo1("테스트게임정보1").brand("인텔")
-                .deviceType(DeviceType.PC).price(9900).gameType(GameFactoryMethod.AOS).build();
+                .deviceType(DeviceType.PC).price(9900).gameType(GameType.AOS).build();
         String param = objectMapper.writeValueAsString(gameParam);
 
         mockMvc.perform(post("/api/game")
@@ -44,7 +45,7 @@ public class GameControllerTest {
     @Transactional
     public void updateGameTest() throws Exception{
         GameParam gameParam = GameParam.builder().gameNm("테스트게임2").gameInfo1("테스트게임정보1수정").brand("인텔에서이클립스로")
-                .deviceType(DeviceType.PC).price(9900).gameType(GameFactoryMethod.AOS).build();
+                .deviceType(DeviceType.PC).price(9900).gameType(GameType.AOS).build();
         String param = objectMapper.writeValueAsString(gameParam);
 
         mockMvc.perform(put("/api/game/{id}", 9)

@@ -12,4 +12,8 @@ public interface ItemDslRepository {
 
     List<Item> findDelItemsByItemIds(List<Long> itemIds);
 
+    void updateItemActYn(List<Long> characterIds);
+
+    List<Long> findItemSpecIdsByCharacterIds(List<Long> characterIds);
+
 }

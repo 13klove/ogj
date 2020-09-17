@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,13 +41,17 @@ public class GameValidService {
 
     public void detailGame(GameSearch gameSearch){ GameValid.GAME_ID_LOCK.validLogic(gameSearch.getGameId()); }
 
-//    public void delGame(Long gameId){
-//        if(gameId == null) throw new ParamValidException("삭제할 게임이 없습니다.");
-//    }
-//
-//    public void delGames(List<Long> gamesId){
-//        if(gamesId.isEmpty()) throw new ParamValidException("삭제할 게임이 없습니다.");
-//    }
+    public void delGame(Long gameId){
+        GameValid.GAME_ID_LOCK.validLogic(gameId);
+        Optional<Game> game = gameJpaRepository.findById(gameId);
+        GameValid.GAME_NO_HAVE.validLogic(game);
+    }
+
+    public void delGames(List<Long> gamesId){
+        GameValid.GAME_IDS_LOCK.validLogic(gamesId);
+        List<Game> games = gameJpaRepository.findAllById(gamesId);
+        GameValid.GAME_GAMES_NO_HAVE.validLogic(games);
+    }
 
     private void createUpdate(GameParam gameParam) {
         GameInfoValid.GAME_INFO_GAME_INFO1_LOCK.validLogic(gameParam.getGameInfo1());

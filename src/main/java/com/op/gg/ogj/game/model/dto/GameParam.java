@@ -1,7 +1,7 @@
 package com.op.gg.ogj.game.model.dto;
 
 import com.op.gg.ogj.game.model.DeviceType;
-import com.op.gg.ogj.game.model.GameFactoryMethod;
+import com.op.gg.ogj.game.model.GameType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -9,15 +9,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @ApiModel
+@NoArgsConstructor
+@AllArgsConstructor
 public class GameParam {
 
     @ApiModelProperty(value = "게임id")
     private Long gameId;
+
+    @ApiModelProperty(value = "게임id")
+    private List<Long> gameIds;
 
     @ApiModelProperty(value = "게임이름", required = true)
     private String gameNm;
@@ -32,7 +37,7 @@ public class GameParam {
     private DeviceType deviceType;
 
     @ApiModelProperty(value = "게임 장르", required = true)
-    private GameFactoryMethod gameType;
+    private GameType gameType;
 
     //fps
     @ApiModelProperty(value = "fps전용")

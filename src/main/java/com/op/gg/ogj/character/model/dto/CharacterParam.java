@@ -20,19 +20,19 @@ public class CharacterParam {
     @ApiModelProperty(value = "characterId", notes = "characterId")
     private Long characterId;
 
-    @ApiModelProperty(value = "gameId", notes = "gameId")
+    @ApiModelProperty(value = "gameId", notes = "gameId", required = true)
     private Long gameId;
 
-    @ApiModelProperty(value = "characterNm", notes = "characterNm")
+    @ApiModelProperty(value = "characterNm", notes = "characterNm", required = true)
     private String characterNm;
 
-    @ApiModelProperty(value = "characterType", notes = "characterType")
+    @ApiModelProperty(value = "characterType", notes = "characterType", required = true)
     private CharacterType characterType;
 
-    @ApiModelProperty(value = "life", notes = "life")
+    @ApiModelProperty(value = "life", notes = "life", required = true)
     private Integer life;
 
-    @ApiModelProperty(value = "energy", notes = "energy")
+    @ApiModelProperty(value = "energy", notes = "energy", required = true)
     private Integer energy;
 
     @ApiModelProperty(value = "imgUrl", notes = "imgUrl")

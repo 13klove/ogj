@@ -23,25 +23,25 @@ public class SkillParam {
     @ApiModelProperty(value = "skillsId")
     private List<Long> skillsId;
 
-    @ApiModelProperty(value = "characterId")
+    @ApiModelProperty(value = "characterId", required = true)
     private Long characterId;
 
-    @ApiModelProperty(value = "skillNm")
+    @ApiModelProperty(value = "skillNm", required = true)
     private String skillNm;
 
-    @ApiModelProperty(value = "useEnergy")
+    @ApiModelProperty(value = "useEnergy", required = true)
     private Integer useEnergy;
 
-    @ApiModelProperty(value = "useLife")
+    @ApiModelProperty(value = "useLife", required = true)
     private Integer useLife;
 
-    @ApiModelProperty(value = "damage")
+    @ApiModelProperty(value = "damage", required = true)
     private Integer damage;
 
-    @ApiModelProperty(value = "skillType")
+    @ApiModelProperty(value = "skillType", required = true)
     private SkillType skillType;
 
-    @ApiModelProperty(value = "ulimateYn")
+    @ApiModelProperty(value = "ulimateYn", required = true)
     private Boolean ulimateYn;
 
     @ApiModelProperty(value = "imgUrl")

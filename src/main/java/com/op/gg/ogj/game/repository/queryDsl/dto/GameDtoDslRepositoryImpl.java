@@ -1,7 +1,7 @@
 package com.op.gg.ogj.game.repository.queryDsl.dto;
 
 import com.op.gg.ogj.game.model.DeviceType;
-import com.op.gg.ogj.game.model.GameFactoryMethod;
+import com.op.gg.ogj.game.model.GameType;
 import com.op.gg.ogj.game.model.dto.GameResponse;
 import com.op.gg.ogj.game.model.dto.GameSearch;
 import com.op.gg.ogj.game.model.dto.QGameResponse;
@@ -111,7 +111,7 @@ public class GameDtoDslRepositoryImpl implements GameDtoDslRepository {
 
     private BooleanExpression whereGameNm(String gameNm) { return StringUtils.hasText(gameNm)?game.gameNm.eq(gameNm):null; }
 
-    private BooleanExpression whereGameType(GameFactoryMethod gameType) { return gameType != null?game.gameType.eq(gameType):null; }
+    private BooleanExpression whereGameType(GameType gameType) { return gameType != null?game.gameType.eq(gameType):null; }
 
     private BooleanExpression whereDeviceType(DeviceType deviceType) { return deviceType != null?game.deviceType.eq(deviceType):null; }
 
@@ -126,8 +126,6 @@ public class GameDtoDslRepositoryImpl implements GameDtoDslRepository {
     private BooleanExpression ostWhereGameId(Long gameId) { return gameId != null?ost.game.gameId.eq(gameId):null; }
 
     private BooleanExpression ostWhereActYn() { return ost.actYn.eq(true); }
-
-    //private BooleanExpression mapWhereOstId(List<Long> mapId) { return mapId != null&&!mapId.isEmpty()?map.mapId.in(mapId):null; }
 
     private BooleanExpression mapWhereGameId(Long gameId) { return gameId != null?map.game.gameId.eq(gameId):null; }
 

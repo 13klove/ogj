@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SkinSearch {
 
-    @ApiModelProperty(notes = "characterId")
+    @ApiModelProperty(notes = "characterId", required = true)
     private Long characterId;
 
     @ApiModelProperty(notes = "skinId")

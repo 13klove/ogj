@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+
 ////https://eblo.tistory.com/48
 
 @Api(tags = {"game"})
@@ -44,6 +46,18 @@ public class GameContoller {
     @ApiOperation(value = "게임 상세", notes = "게임 상세")
     public ResponseDto detailGame(@PathVariable(value = "id") Long gameId){
         return ResponseDto.of(gameService.detailGame(GameSearch.builder().gameId(gameId).build()));
+    }
+
+    @PutMapping("{id}/del")
+    @ApiOperation(value = "게임 삭제", notes = "게임 삭제")
+    public void delGame(@PathVariable(value = "id") Long gameId){
+        gameService.delGame(GameParam.builder().gameId(gameId).gameIds(Arrays.asList(gameId)).build());
+    }
+
+    @PutMapping("dels")
+    @ApiOperation(value = "게임 삭제", notes = "게임 삭제")
+    public void delGames(@RequestBody GameParam gameParam){
+        gameService.delGames(gameParam);
     }
 
 }
