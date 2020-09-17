@@ -106,6 +106,7 @@ public class GameCoreService {
             List<Long> itemSpecIds = itemJpaRepository.findItemSpecIdsByCharacterIds(a);
             itemSpecJpaRepository.updateItemSpecByItemSpecIds(itemSpecIds);
         });
+        //여기에 수정하고 commit안하고 넘어가기 여기는 dev
     }
 
 
