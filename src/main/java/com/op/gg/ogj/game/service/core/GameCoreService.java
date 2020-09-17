@@ -43,7 +43,7 @@ public class GameCoreService {
     private final SkillJpaRepository skillJpaRepository;
     private final ItemSpecJpaRepository itemSpecJpaRepository;
 
-    @Transactional
+    @Transactional//dev 여기를 수정하면?
     public Long createGame(GameParam gameParam){
         Game game = Game.createGame(gameParam.getGameNm(), gameParam.getPrice(), gameParam.getBrand(), gameParam.getDeviceType(), gameParam.getGameType(), gameParam.getUsemapYn(), gameParam.getStoryYn(), gameParam.getAutoPlayYn(), gameParam.getLicenseYn());
         GameInfo gameInfo = GameInfo.createGameInfo(gameParam.getGameInfo1(), gameParam.getGameInfo2());
