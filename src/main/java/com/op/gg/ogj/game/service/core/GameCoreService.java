@@ -30,7 +30,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class GameCoreService {
-
+    //커밋을 해야 넘어가는 구만
     private final static int PARTITION_SIZE = 1000;
 
     private final GameJpaRepository gameJpaRepository;
